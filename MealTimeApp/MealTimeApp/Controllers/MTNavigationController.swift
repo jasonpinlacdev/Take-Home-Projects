@@ -31,7 +31,7 @@ class MTNavigationController: UINavigationController {
     self.navigationBar.scrollEdgeAppearance = appearance
     self.navigationBar.compactScrollEdgeAppearance = appearance
     self.navigationBar.prefersLargeTitles = true
-    self.navigationBar.tintColor = .systemPink
+    self.navigationBar.tintColor = UIColor(red: (255.0/255.0), green: (87.0/255.0), blue: (87.0/255.0), alpha: 1.0)
   }
   
   

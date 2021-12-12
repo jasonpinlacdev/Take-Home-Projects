@@ -62,6 +62,37 @@ struct MTMealDetail {
   let sourceImageURL: String?
   let creativeCommonsConfirmed: String?
   let dateModified: String?
+  
+  var ingredientsAndMeasurements: [(String, String)] {
+    var ingredientsAndMeasurements: [(String, String)] = []
+    if let ingredient1 = ingredient1, let ingredientMeasure1 = ingredientMeasure1, !ingredient1.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure1.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient1, ingredientMeasure1 )) }
+    if let ingredient2 = ingredient2, let ingredientMeasure2 = ingredientMeasure2, !ingredient2.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure2.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient2, ingredientMeasure2 )) }
+    if let ingredient3 = ingredient3, let ingredientMeasure3 = ingredientMeasure3, !ingredient3.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure3.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient3, ingredientMeasure3 )) }
+    if let ingredient4 = ingredient4, let ingredientMeasure4 = ingredientMeasure4, !ingredient4.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure4.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient4, ingredientMeasure4 )) }
+    if let ingredient5 = ingredient5, let ingredientMeasure5 = ingredientMeasure5, !ingredient5.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure5.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient5, ingredientMeasure5 )) }
+    if let ingredient6 = ingredient6, let ingredientMeasure6 = ingredientMeasure6, !ingredient6.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure6.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient6, ingredientMeasure6 )) }
+    if let ingredient7 = ingredient7, let ingredientMeasure7 = ingredientMeasure7, !ingredient7.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure7.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient7, ingredientMeasure7 )) }
+    if let ingredient8 = ingredient8, let ingredientMeasure8 = ingredientMeasure8, !ingredient8.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure8.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient8, ingredientMeasure8 )) }
+    if let ingredient9 = ingredient9, let ingredientMeasure9 = ingredientMeasure9, !ingredient9.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure9.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient9, ingredientMeasure9 )) }
+    if let ingredient10 = ingredient10, let ingredientMeasure10 = ingredientMeasure10, !ingredient10.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure10.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient10, ingredientMeasure10)) }
+    if let ingredient11 = ingredient11, let ingredientMeasure11 = ingredientMeasure11, !ingredient11.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure11.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient11, ingredientMeasure11)) }
+    if let ingredient12 = ingredient12, let ingredientMeasure12 = ingredientMeasure12, !ingredient12.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure12.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient12, ingredientMeasure12)) }
+    if let ingredient13 = ingredient13, let ingredientMeasure13 = ingredientMeasure13, !ingredient13.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure13.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient13, ingredientMeasure13)) }
+    if let ingredient14 = ingredient14, let ingredientMeasure14 = ingredientMeasure14, !ingredient14.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure14.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient14, ingredientMeasure14)) }
+    if let ingredient15 = ingredient15, let ingredientMeasure15 = ingredientMeasure15, !ingredient15.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure15.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient15, ingredientMeasure15)) }
+    if let ingredient16 = ingredient16, let ingredientMeasure16 = ingredientMeasure16, !ingredient16.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure16.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient16, ingredientMeasure16)) }
+    if let ingredient17 = ingredient17, let ingredientMeasure17 = ingredientMeasure17, !ingredient17.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure17.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient17, ingredientMeasure17)) }
+    if let ingredient18 = ingredient18, let ingredientMeasure18 = ingredientMeasure18, !ingredient18.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure18.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient18, ingredientMeasure18)) }
+    if let ingredient19 = ingredient19, let ingredientMeasure19 = ingredientMeasure19, !ingredient19.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure19.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient19, ingredientMeasure19)) }
+    if let ingredient20 = ingredient20, let ingredientMeasure20 = ingredientMeasure20, !ingredient20.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure20.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsAndMeasurements.append((ingredient20, ingredientMeasure20)) }
+    return ingredientsAndMeasurements
+  }
+  
+
+//  var instructions: [String] {
+//
+//  }
+  
 }
 
 

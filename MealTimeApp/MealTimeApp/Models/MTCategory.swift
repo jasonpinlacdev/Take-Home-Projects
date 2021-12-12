@@ -23,3 +23,7 @@ extension MTCategory: Codable {
   }
 }
 
+extension MTCategory: Hashable {
+  
+}
+
