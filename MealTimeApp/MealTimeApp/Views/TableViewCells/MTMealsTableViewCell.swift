@@ -28,9 +28,9 @@ class MTMealsTableViewCell: UITableViewCell {
   
   
   func set(_ meal: MTMeal) {
+    self.mealsBodyLabel.text = meal.name
     MTNetworkManager.shared.getThumbnail(from: meal.thumbnailURL) { [weak self] result in
       DispatchQueue.main.async {
-        self?.mealsBodyLabel.text = meal.name
         switch result {
         case .success(let thumbnailImage):
           self?.mealsThumbnailImageView.image = thumbnailImage
@@ -43,15 +43,15 @@ class MTMealsTableViewCell: UITableViewCell {
   
   
   private func configure() {
-    self.accessoryType = .detailButton
+    self.accessoryType = .detailDisclosureButton
     self.tintColor = .coralRed
     mealsBodyLabel.backgroundColor = .clear
-//    mealsBodyLabel.textAlignment = .left
+    mealsBodyLabel.font = UIFont.preferredFont(forTextStyle: .title3)
   }
   
   
   private func configureLayout() {
-    let padding: CGFloat = 5.0
+    let padding: CGFloat = 10.0
     self.contentView.addSubview(mealsThumbnailImageView)
     self.contentView.addSubview(mealsBodyLabel)
     NSLayoutConstraint.activate([

@@ -12,7 +12,6 @@ struct MTMealDetail {
   let name: String
   let category: String
   let thumbnailURL: String
-  
   let alternateDrinkName: String?
   let area: String?
   let instructions: String?
@@ -63,7 +62,7 @@ struct MTMealDetail {
   let creativeCommonsConfirmed: String?
   let dateModified: String?
   
-  var ingrediantsWithMeasurements: [(String, String)] {
+  var ingredientsWithMeasurements: [(String, String)] {
     var ingredientsWithMeasurements: [(String, String)] = []
     if let ingredient1 = ingredient1, let ingredientMeasure1 = ingredientMeasure1, !ingredient1.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure1.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsWithMeasurements.append((ingredient1, ingredientMeasure1 )) }
     if let ingredient2 = ingredient2, let ingredientMeasure2 = ingredientMeasure2, !ingredient2.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, !ingredientMeasure2.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { ingredientsWithMeasurements.append((ingredient2, ingredientMeasure2 )) }
@@ -88,10 +87,11 @@ struct MTMealDetail {
     return ingredientsWithMeasurements
   }
   
-
-//  var instructions: [String] {
-//
-//  }
+  var preparations: [String] {
+    guard let instructions = instructions else { return [] }
+    let preparations = instructions.split(whereSeparator: \.isNewline).map { String($0) }
+    return preparations
+  }
   
 }
 
@@ -102,7 +102,6 @@ extension MTMealDetail: Codable {
     case name = "strMeal"
     case category = "strCategory"
     case thumbnailURL = "strMealThumb"
-    
     case alternateDrinkName = "strDrinkAlternate"
     case area = "strArea"
     case instructions = "strInstructions"
