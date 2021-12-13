@@ -12,6 +12,7 @@ class MTNetworkManager {
   
   static let shared = MTNetworkManager()
   let baseURL: String = "https://www.themealdb.com/api/json/v1/1/"
+  let thumbnailImageCache = NSCache<NSString, UIImage>()
   
   
   private init() { }
@@ -61,16 +62,23 @@ class MTNetworkManager {
     task.resume()
   }
   
+  
   func getThumbnail(from urlString: String, completionHandler: @escaping (Result<UIImage, MTNetworkingError>) -> Void) {
     guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return }
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-      guard error == nil else { completionHandler(.failure(.localError)); return }
-      guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
-      guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
-      guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
-      completionHandler(.success(thumbnailImage))
+    let thumbNailImageCacheKey = NSString(string: urlString)
+    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
+      completionHandler(.success(thumnailImage))
+    } else {
+      let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        guard error == nil else { completionHandler(.failure(.localError)); return }
+        guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
+        guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
+        guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
+        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
+        completionHandler(.success(thumbnailImage))
+      }
+      task.resume()
     }
-    task.resume()
   }
 
 }
