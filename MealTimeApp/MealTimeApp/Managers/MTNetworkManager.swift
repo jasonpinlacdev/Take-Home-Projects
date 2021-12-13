@@ -61,10 +61,16 @@ class MTNetworkManager {
     task.resume()
   }
   
-  func getThumbnail(from url: String, completionHandler: 2es ()->Void) {
-    guard let url = URL(string: url) else { return }
-    let thumbnailData = Data()
-    
+  func getThumbnail(from urlString: String, completionHandler: @escaping (Result<UIImage, MTNetworkingError>) -> Void) {
+    guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return }
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+      guard error == nil else { completionHandler(.failure(.localError)); return }
+      guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
+      guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
+      guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
+      completionHandler(.success(thumbnailImage))
+    }
+    task.resume()
   }
 
 }

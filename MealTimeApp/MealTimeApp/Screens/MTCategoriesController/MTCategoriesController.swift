@@ -12,7 +12,7 @@ class MTCategoriesController: UIViewController {
   var categories: [MTCategory] = []
   
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-  let collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 2, spacingBetweenItems: 10)
+  let collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 2, spacingBetweenItems: 5)
   var collectionViewDiffableDataSource: MTCategoriesCollectionViewDiffableDataSource!
   
   override func viewDidLoad() {
@@ -42,8 +42,9 @@ class MTCategoriesController: UIViewController {
   
   private func configureCollectionViewDiffableDataSource() {
     self.collectionView.register(MTCategoryCollectionViewCell.self, forCellWithReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier)
-    self.collectionViewDiffableDataSource = MTCategoriesCollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+    self.collectionViewDiffableDataSource = MTCategoriesCollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, category in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? MTCategoryCollectionViewCell else { fatalError("Failed to dequeue a MTCategoryCollectionViewCell") }
+      cell.set(category)
       return cell
     })
     collectionViewDiffableDataSource.update(with: self.categories)

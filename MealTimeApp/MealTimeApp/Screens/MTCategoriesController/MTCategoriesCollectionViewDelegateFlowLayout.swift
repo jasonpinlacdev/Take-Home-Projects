@@ -32,8 +32,8 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let horizontalSpace = collectionView.bounds.width
-    let occupiedSpace = (numberOfItemsPerRow + 1) * spacingBetweenItems
-    let availableSpace = horizontalSpace - occupiedSpace
+    let paddingSpace = (numberOfItemsPerRow + 1) * spacingBetweenItems
+    let availableSpace = horizontalSpace - paddingSpace
     let width = availableSpace/numberOfItemsPerRow
     return CGSize(width: width, height: width)
   }

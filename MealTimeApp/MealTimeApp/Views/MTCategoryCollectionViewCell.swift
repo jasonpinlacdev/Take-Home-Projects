@@ -11,13 +11,11 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   
   static let reuseIdentifier = String(describing: MTCategoryCollectionViewCell.self)
   
-  let categoryThumbnailImageView: UIImageView = {
+  lazy var categoryThumbnailImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = MTSymbol.forkKnifePlaceholder.image
-    imageView.contentMode = .scaleAspectFit
-    imageView.layer.cornerRadius = 16
-    imageView.layer.borderColor = UIColor.systemGray3.cgColor
-//    imageView.layer.borderWidth = 1
+    imageView.contentMode = .scaleAspectFill
+    imageView.layer.cornerRadius = (self.contentView.bounds.height * 0.85)/2
     imageView.clipsToBounds = true
     imageView.tintColor = UIColor.systemGray3
     imageView.backgroundColor = UIColor.systemGray6
@@ -31,7 +29,9 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
     label.lineBreakMode = .byTruncatingTail
     label.textAlignment = .center
     label.text = "Placeholder"
+    label.font = UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
+    label.backgroundColor = .systemBackground
     return label
   }()
   
@@ -39,6 +39,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configureLayout()
+
   }
   
   
@@ -47,14 +48,33 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   }
   
   
+  func set(_ category: MTCategory) {
+    MTNetworkManager.shared.getThumbnail(from: category.thumbnailURL) { [weak self] result in
+      DispatchQueue.main.async {
+        self?.categoryLabel.text = category.name
+        switch result {
+        case .success(let thumbnailImage):
+          self?.categoryThumbnailImageView.image = thumbnailImage
+        case .failure(_):
+          return
+        }
+      }
+    }
+  }
+  
+  
   private func configureLayout() {
     self.contentView.addSubview(categoryThumbnailImageView)
-//    self.contentView.addSubview(categoryLabel)
+    self.contentView.addSubview(categoryLabel)
     NSLayoutConstraint.activate([
       categoryThumbnailImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
       categoryThumbnailImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
       categoryThumbnailImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
       categoryThumbnailImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+      categoryLabel.bottomAnchor.constraint(equalTo: categoryThumbnailImageView.bottomAnchor),
+      categoryLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.12),
+      categoryLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
+      categoryLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
     ])
   }
   
