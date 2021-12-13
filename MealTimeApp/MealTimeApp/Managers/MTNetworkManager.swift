@@ -60,5 +60,11 @@ class MTNetworkManager {
     }
     task.resume()
   }
+  
+  func getThumbnail(from url: String, completionHandler: 2es ()->Void) {
+    guard let url = URL(string: url) else { return }
+    let thumbnailData = Data()
+    
+  }
 
 }

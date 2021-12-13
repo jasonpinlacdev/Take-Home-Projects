@@ -29,9 +29,8 @@ class MTCategoriesController: UIViewController {
   }
   
   private func configureCollectionViewLayout() {
-    self.collectionView.backgroundColor = .systemRed
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(self.collectionView)
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor),
       collectionView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
