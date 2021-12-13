@@ -22,9 +22,10 @@ class MTBodyLabel: UILabel {
     self.numberOfLines = 0
     self.lineBreakMode = .byTruncatingTail
     self.text = "Placeholder"
+    self.textAlignment = .center
     self.font = UIFont.preferredFont(forTextStyle: .body)
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.backgroundColor = .systemBackground
+    self.backgroundColor = .coralRed
   }
 
   

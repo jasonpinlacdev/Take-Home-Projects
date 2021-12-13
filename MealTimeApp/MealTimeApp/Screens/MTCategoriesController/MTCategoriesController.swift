@@ -12,7 +12,7 @@ class MTCategoriesController: UIViewController {
   var categories: [MTCategory] = []
   
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-  lazy var collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 3, spacingBetweenItems: 1, categoriesController: self)
+  lazy var collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 3, spacingBetweenItems: 5, categoriesController: self)
   var collectionViewDiffableDataSource: MTCategoriesCollectionViewDiffableDataSource!
   
   override func viewDidLoad() {

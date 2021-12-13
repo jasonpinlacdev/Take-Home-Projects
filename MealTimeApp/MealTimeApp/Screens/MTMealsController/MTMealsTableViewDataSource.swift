@@ -28,22 +28,14 @@ extension MTMealsTableViewDataSource: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: MTMealsTableViewCell.reuseIdentifier, for: indexPath) as? MTMealsTableViewCell else { fatalError() }
     let meal = mealsController.meals[indexPath.row]
-    cell.textLabel?.text = meal.name
-    cell.imageView?.image = MTSymbol.forkKnifePlaceholder.image
-    MTNetworkManager.shared.getThumbnail(from: meal.thumbnailURL) { result in
-      switch result {
-      case .success(let thumbnailImage):
-        DispatchQueue.main.async {
-          cell.imageView?.image = thumbnailImage
-        }
-      case .failure(_):
-        return
-      }
-    }
-    cell.accessoryType = .disclosureIndicator
+    cell.set(meal)
     return cell
   }
+  
+  
+  
+  
   
 }

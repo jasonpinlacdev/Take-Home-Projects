@@ -24,6 +24,8 @@ class MTThumbnailImageView: UIImageView {
     self.clipsToBounds = true
     self.tintColor = UIColor.systemGray3
     self.backgroundColor = UIColor.systemGray6
+    self.layer.cornerRadius = 10
+    self.clipsToBounds = true
     self.translatesAutoresizingMaskIntoConstraints = false
   }
   

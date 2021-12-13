@@ -47,7 +47,7 @@ class MTMealsController: UIViewController {
   }
   
   private func configureTableView() {
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealsTableViewCell.reuseIdentifier)
     tableView.dataSource = self.tableViewDataSource
     tableView.delegate = self.tableViewDelegate
   }
