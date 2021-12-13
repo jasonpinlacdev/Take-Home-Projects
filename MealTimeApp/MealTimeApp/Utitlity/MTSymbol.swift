@@ -19,4 +19,5 @@ enum MTSymbol {
       return UIImage(systemName: "play.fill")!
     }
   }
+  
 }

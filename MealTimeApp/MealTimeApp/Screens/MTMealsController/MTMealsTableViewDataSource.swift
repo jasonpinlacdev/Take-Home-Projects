@@ -18,7 +18,9 @@ class MTMealsTableViewDataSource: NSObject {
   
 }
 
+
 extension MTMealsTableViewDataSource: UITableViewDataSource {
+  
   func numberOfSections(in tableView: UITableView) -> Int {
     1
   }
@@ -33,9 +35,5 @@ extension MTMealsTableViewDataSource: UITableViewDataSource {
     cell.set(meal)
     return cell
   }
-  
-  
-  
-  
   
 }

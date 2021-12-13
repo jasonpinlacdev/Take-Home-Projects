@@ -20,11 +20,10 @@ class MTMealDetailTableViewDelegate: NSObject {
 extension MTMealDetailTableViewDelegate: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if indexPath.section == 0 {
-      return 200
-    }
+    if indexPath.section == 0 { return 200 }
     return UITableView.automaticDimension
   }
+  
   
   func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
     return false

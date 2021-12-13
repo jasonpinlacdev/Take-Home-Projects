@@ -30,7 +30,6 @@ enum MTNetworkingError: Error {
     case .invalidYoutubeURL:
       return "Invalid YouTube URL"
     }
-    
   }
   
   var message: String {

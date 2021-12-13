@@ -10,7 +10,6 @@ import UIKit
 class MTMealDetailIngredientTableViewCell: UITableViewCell {
 
   static let reuseIdentifier = String(describing: MTMealDetailIngredientTableViewCell.self)
-  
   let ingredientLabel = MTMealDetailLabel()
   let measurementLabel = MTMealDetailLabel()
   
@@ -24,6 +23,7 @@ class MTMealDetailIngredientTableViewCell: UITableViewCell {
     return stackView
   }()
   
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configureLayout()
@@ -34,10 +34,12 @@ class MTMealDetailIngredientTableViewCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  
   func set(ingredientAndMeasurement: (ingredient: String, measurement: String)) {
     self.ingredientLabel.text = ingredientAndMeasurement.ingredient
     self.measurementLabel.text = ingredientAndMeasurement.measurement
   }
+  
   
   private func configureLayout() {
     let padding: CGFloat = 5

@@ -32,6 +32,7 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     MTMealDetailTableViewSection.allCases.count
   }
 
+  
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 2:
@@ -45,6 +46,7 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     }
   }
 
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
@@ -62,6 +64,7 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     }
   }
 
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let mealDetail = mealDetailController.mealDetail
     switch indexPath.section {
@@ -90,4 +93,5 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
       fatalError("Error. No cell should be dequeued.")
     }
   }
+  
 }

@@ -10,10 +10,9 @@ import UIKit
 class MTMealDetailTitleTableViewCell: UITableViewCell {
   
   static let reuseIdentifier = String(describing: MTMealDetailTitleTableViewCell.self)
-  
   let titleLabel = MTTitleLabel()
   
-  
+
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configure()

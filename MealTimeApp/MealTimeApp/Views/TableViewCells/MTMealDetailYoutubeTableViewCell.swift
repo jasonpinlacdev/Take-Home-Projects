@@ -11,7 +11,6 @@ import SafariServices
 class MTMealDetailYoutubeTableViewCell: UITableViewCell {
   
   static let reuseIdentifier = String(describing: MTMealDetailYoutubeTableViewCell.self)
-  
   weak var mealDetailController: MTMealDetailController?
   var youtubeURLString: String?
   
@@ -29,6 +28,7 @@ class MTMealDetailYoutubeTableViewCell: UITableViewCell {
     return button
   }()
   
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configure()
@@ -45,6 +45,7 @@ class MTMealDetailYoutubeTableViewCell: UITableViewCell {
     youtubeButton.addTarget(self, action: #selector(youtubeButtonTapped), for: .touchUpInside)
   }
   
+  
   @objc private func youtubeButtonTapped() {
     guard let mealDetailController = mealDetailController,
           let youtubeURLString = youtubeURLString,
@@ -57,6 +58,7 @@ class MTMealDetailYoutubeTableViewCell: UITableViewCell {
     safariViewController.preferredControlTintColor = .coralRed
     mealDetailController.present(safariViewController, animated: true)
   }
+  
   
   private func configureLayout() {
     self.contentView.addSubview(youtubeButton)

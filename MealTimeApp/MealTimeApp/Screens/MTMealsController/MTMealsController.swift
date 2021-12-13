@@ -10,19 +10,21 @@ import UIKit
 class MTMealsController: UIViewController {
   
   var meals: [MTMeal]
-  
   let tableView = UITableView()
   lazy var tableViewDataSource = MTMealsTableViewDataSource(mealsController: self)
   lazy var tableViewDelegate = MTMealsTableViewDelegate(mealsController: self)
+  
   
   init(meals: [MTMeal]) {
     self.meals = meals
     super.init(nibName: nil, bundle: nil)
   }
   
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,9 +33,11 @@ class MTMealsController: UIViewController {
     configureTableView()
   }
   
+  
   private func configure() {
     self.view.backgroundColor = .systemBackground
   }
+  
   
   private func configureTableViewLayout() {
     self.view.addSubview(tableView)
@@ -46,12 +50,11 @@ class MTMealsController: UIViewController {
     ])
   }
   
+  
   private func configureTableView() {
     tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealsTableViewCell.reuseIdentifier)
     tableView.dataSource = self.tableViewDataSource
     tableView.delegate = self.tableViewDelegate
   }
-  
-  
   
 }

@@ -10,8 +10,8 @@ import UIKit
 class MTMealDetailPreparationTableViewCell: UITableViewCell {
 
   static let reuseIdentifier = String(describing: MTMealDetailPreparationTableViewCell.self)
-  
   let preparationLabel = MTMealDetailLabel()
+  
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,15 +24,18 @@ class MTMealDetailPreparationTableViewCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  
   func set(preparation: String) {
     self.preparationLabel.text = preparation
   }
+  
   
   private func configure() {
     self.preparationLabel.numberOfLines = 0
     self.preparationLabel.textAlignment = .left
   }
 
+  
   private func configureLayout() {
     let padding: CGFloat = 5
     self.contentView.addSubview(preparationLabel)
@@ -43,4 +46,5 @@ class MTMealDetailPreparationTableViewCell: UITableViewCell {
       self.preparationLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -padding),
     ])
   }
+  
 }

@@ -45,6 +45,7 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
     }
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let horizontalSpace = collectionView.bounds.width
     let paddingSpace = (numberOfItemsPerRow + 1) * spacingBetweenItems
@@ -53,13 +54,16 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
     return CGSize(width: width, height: width)
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return spacingBetweenItems
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return spacingBetweenItems
   }
+  
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: spacingBetweenItems, left: spacingBetweenItems, bottom: spacingBetweenItems, right: spacingBetweenItems)

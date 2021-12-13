@@ -21,5 +21,4 @@ class MTCategoriesCollectionViewDiffableDataSource: UICollectionViewDiffableData
     self.apply(snapshot)
   }
   
-  
 }

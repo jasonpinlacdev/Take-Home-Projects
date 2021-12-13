@@ -10,8 +10,8 @@ import UIKit
 class MTMealDetailBannerTableViewCell: UITableViewCell {
   
   static let reuseIdentifier = String(describing: MTMealDetailBannerTableViewCell.self)
-  
   let bannerImageView = MTThumbnailImageView()
+  
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,6 +22,7 @@ class MTMealDetailBannerTableViewCell: UITableViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   func set(thumbnailUrlString: String) {
     MTNetworkManager.shared.getThumbnail(from: thumbnailUrlString) { [weak self] result in
@@ -35,6 +36,7 @@ class MTMealDetailBannerTableViewCell: UITableViewCell {
       }
     }
   }
+  
   
   private func configureLayout() {
     self.contentView.addSubview(bannerImageView)

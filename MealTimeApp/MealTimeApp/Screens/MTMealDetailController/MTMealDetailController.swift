@@ -21,6 +21,7 @@ class MTMealDetailController: UIViewController {
     super.init(nibName: nil, bundle: nil)
   }
   
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -33,10 +34,12 @@ class MTMealDetailController: UIViewController {
     configureTableView()
   }
   
+  
   private func configure() {
     self.view.backgroundColor = .systemBackground
     self.navigationItem.largeTitleDisplayMode = .never
   }
+  
   
   private func configureTableViewLayout() {
     let padding: CGFloat = 5.0
@@ -49,6 +52,7 @@ class MTMealDetailController: UIViewController {
       tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
     ])
   }
+  
   
   private func configureTableView() {
     tableView.register(MTMealDetailBannerTableViewCell.self, forCellReuseIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier)

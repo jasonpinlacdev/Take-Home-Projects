@@ -10,10 +10,10 @@ import UIKit
 class MTCategoriesController: UIViewController {
   
   var categories: [MTCategory] = []
-  
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
   lazy var collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 2, spacingBetweenItems: 5, categoriesController: self)
   var collectionViewDiffableDataSource: MTCategoriesCollectionViewDiffableDataSource!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,10 +23,12 @@ class MTCategoriesController: UIViewController {
     getCategoriesForCollectionView()
   }
   
+  
   private func configure() {
     self.title = "Categories"
     self.view.backgroundColor = .systemBackground
   }
+  
   
   private func configureCollectionViewLayout() {
     self.view.addSubview(self.collectionView)
@@ -39,6 +41,7 @@ class MTCategoriesController: UIViewController {
     ])
     self.collectionView.delegate = collectionViewDelegateFlowLayout
   }
+  
   
   private func configureCollectionViewDiffableDataSource() {
     self.collectionView.register(MTCategoryCollectionViewCell.self, forCellWithReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier)
