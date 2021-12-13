@@ -34,6 +34,13 @@ extension UIViewController {
     loadingViewGlobal = nil
   }
   
+  
+  func presentAlert(error: MTNetworkingError) {
+    let alertController = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+    self.present(alertController, animated: true)
+  }
+  
 }
   
 

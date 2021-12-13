@@ -11,11 +11,11 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   
   static let reuseIdentifier = String(describing: MTCategoryCollectionViewCell.self)
   
-  lazy var categoryThumbnailImageView: UIImageView = {
+  let categoryThumbnailImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = MTSymbol.forkKnifePlaceholder.image
     imageView.contentMode = .scaleAspectFill
-    imageView.layer.cornerRadius = (self.contentView.bounds.height * 0.85)/2
+//    imageView.layer.cornerRadius = (self.contentView.bounds.height)/2
     imageView.clipsToBounds = true
     imageView.tintColor = UIColor.systemGray3
     imageView.backgroundColor = UIColor.systemGray6
@@ -27,7 +27,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
     let label = UILabel()
     label.numberOfLines = 0
     label.lineBreakMode = .byTruncatingTail
-    label.textAlignment = .center
+//    label.textAlignment = .center
     label.text = "Placeholder"
     label.font = UIFont.preferredFont(forTextStyle: .headline)
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
       categoryThumbnailImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
       categoryThumbnailImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
       categoryLabel.bottomAnchor.constraint(equalTo: categoryThumbnailImageView.bottomAnchor),
-      categoryLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.12),
+      categoryLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.13),
       categoryLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
       categoryLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
     ])

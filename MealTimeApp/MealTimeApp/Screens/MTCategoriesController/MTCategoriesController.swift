@@ -12,7 +12,7 @@ class MTCategoriesController: UIViewController {
   var categories: [MTCategory] = []
   
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-  let collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 2, spacingBetweenItems: 5)
+  lazy var collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 3, spacingBetweenItems: 1, categoriesController: self)
   var collectionViewDiffableDataSource: MTCategoriesCollectionViewDiffableDataSource!
   
   override func viewDidLoad() {
@@ -33,8 +33,8 @@ class MTCategoriesController: UIViewController {
     self.collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor),
-      collectionView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-      collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
+      collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
       collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
     ])
     self.collectionView.delegate = collectionViewDelegateFlowLayout
@@ -61,9 +61,7 @@ class MTCategoriesController: UIViewController {
           self?.collectionViewDiffableDataSource.update(with: categories)
           self?.removeLoadingView()
         case .failure(let error):
-          let alertController = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
-          alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { action in fatalError() }))
-          self?.present(alertController, animated: true)
+          self?.presentAlert(error: error)
         }
       }
     }

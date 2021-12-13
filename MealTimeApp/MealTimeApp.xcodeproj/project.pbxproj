@@ -23,6 +23,9 @@
 		E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB22766B89700368ABF /* MTSymbol.swift */; };
 		E13BEAB52766BBDC00368ABF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */; };
 		E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB62766EEF000368ABF /* UIView+Ext.swift */; };
+		E13BEABA2766F94700368ABF /* MTMealsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB92766F94700368ABF /* MTMealsController.swift */; };
+		E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */; };
+		E13BEABE276706D700368ABF /* MTMealsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */; };
 		E1653705276589420019E76F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1653704276589420019E76F /* AppDelegate.swift */; };
 		E1653707276589420019E76F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1653706276589420019E76F /* SceneDelegate.swift */; };
 		E165370E276589470019E76F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E165370D276589470019E76F /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 		E13BEAB22766B89700368ABF /* MTSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTSymbol.swift; sourceTree = "<group>"; };
 		E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13BEAB62766EEF000368ABF /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E13BEAB92766F94700368ABF /* MTMealsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsController.swift; sourceTree = "<group>"; };
+		E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDataSource.swift; sourceTree = "<group>"; };
+		E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDelegate.swift; sourceTree = "<group>"; };
 		E1653701276589420019E76F /* MealTimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealTimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1653704276589420019E76F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1653706276589420019E76F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E13BEAB82766F91500368ABF /* MTMealsController */ = {
+			isa = PBXGroup;
+			children = (
+				E13BEAB92766F94700368ABF /* MTMealsController.swift */,
+				E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */,
+				E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */,
+			);
+			path = MTMealsController;
+			sourceTree = "<group>";
+		};
 		E16536F8276589420019E76F = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +185,7 @@
 		E165372127658C930019E76F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E13BEAB82766F91500368ABF /* MTMealsController */,
 				E165372227658CBE0019E76F /* MTCategoriesController */,
 			);
 			path = Screens;
@@ -254,11 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */,
 				E1653705276589420019E76F /* AppDelegate.swift in Sources */,
 				E13BEAA727667EFC00368ABF /* UIViewController+Ext.swift in Sources */,
 				E165372027658C900019E76F /* MTCategoriesController.swift in Sources */,
 				E13BEA9A2765ACFF00368ABF /* MTNetworkingError.swift in Sources */,
 				E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */,
+				E13BEABA2766F94700368ABF /* MTMealsController.swift in Sources */,
 				E13BEAA12765E4D800368ABF /* MTMealDetail.swift in Sources */,
 				E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */,
 				E13BEA982765A65A00368ABF /* MTMealsResponse.swift in Sources */,
@@ -270,6 +289,7 @@
 				E13BEAA52766117900368ABF /* MTCategoriesResponse.swift in Sources */,
 				E13BEA922765A18100368ABF /* MTCategory.swift in Sources */,
 				E13BEA9F2765D0E300368ABF /* MTNavigationController.swift in Sources */,
+				E13BEABE276706D700368ABF /* MTMealsTableViewDelegate.swift in Sources */,
 				E13BEAB52766BBDC00368ABF /* UIColor+Ext.swift in Sources */,
 				E13BEA942765A2B500368ABF /* MTMeal.swift in Sources */,
 				E13BEAB12766A11500368ABF /* MTCategoryCollectionViewCell.swift in Sources */,
@@ -418,6 +438,7 @@
 				INFOPLIST_FILE = MealTimeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -446,6 +467,7 @@
 				INFOPLIST_FILE = MealTimeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
