@@ -8,8 +8,9 @@
 import UIKit
 
 enum MTMealDetailTableViewSection: String, CaseIterable {
-  case title = "Title"
   case banner = "Banner"
+  case title = "Title"
+  case videoDemonstration = "Video Demonstration"
   case ingredients = "Ingredients"
   case procedures = "Procedures"
 }
@@ -34,8 +35,10 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 2:
-      return MTMealDetailTableViewSection.ingredients.rawValue
+      return MTMealDetailTableViewSection.videoDemonstration.rawValue
     case 3:
+      return MTMealDetailTableViewSection.ingredients.rawValue
+    case 4:
       return MTMealDetailTableViewSection.procedures.rawValue
     default:
       return nil
@@ -49,8 +52,10 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     case 1:
       return 1
     case 2:
-      return mealDetailController.mealDetail.ingredientsWithMeasurements.count
+      return 1
     case 3:
+      return mealDetailController.mealDetail.ingredientsWithMeasurements.count
+    case 4:
       return mealDetailController.mealDetail.preparations.count
     default:
       return 0
@@ -69,10 +74,15 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
       titleCell.set(title: mealDetail.name)
       return titleCell
     case 2:
+      guard let youtubeCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailYoutubeTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailYoutubeTableViewCell else { fatalError("Failed to dequeue a MTMealDetailTitleTableViewCell.") }
+      if youtubeCell.mealDetailController == nil { youtubeCell.mealDetailController = self.mealDetailController }
+      youtubeCell.youtubeURLString = mealDetail.youtubeURL
+      return youtubeCell
+    case 3:
       guard let ingredientCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailIngredientTableViewCell else { fatalError("Failed to dequeue a MTMealDetailIngredientTableViewCell.") }
       ingredientCell.set(ingredientAndMeasurement: mealDetail.ingredientsWithMeasurements[indexPath.row])
       return ingredientCell
-    case 3:
+    case 4:
       guard let preparationCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailPreparationTableViewCell else { fatalError("Failed to dequeue a MTMealDetailPreparationTableViewCell.") }
       preparationCell.set(preparation: mealDetail.preparations[indexPath.row])
       return preparationCell

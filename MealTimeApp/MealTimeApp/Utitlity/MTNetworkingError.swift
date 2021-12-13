@@ -13,6 +13,7 @@ enum MTNetworkingError: Error {
   case serverError
   case dataError
   case dataDecodingError
+  case invalidYoutubeURL
   
   var title: String {
     switch self {
@@ -26,7 +27,10 @@ enum MTNetworkingError: Error {
       return "Invalid Data Error"
     case .dataDecodingError:
       return "Invalid Data Decoding Error"
+    case .invalidYoutubeURL:
+      return "Invalid YouTube URL"
     }
+    
   }
   
   var message: String {
@@ -41,6 +45,8 @@ enum MTNetworkingError: Error {
       return "The data received from the server is invalid."
     case .dataDecodingError:
       return "Something went wrong decoding the data."
+    case .invalidYoutubeURL:
+      return "This recipe doesn't have a YouTube video demonstration."
     }
   }
   

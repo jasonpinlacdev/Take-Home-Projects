@@ -9,11 +9,14 @@ import UIKit
 
 enum MTSymbol {
   case forkKnifePlaceholder // 􀸩
+  case playFill //􀊄
   
   var image: UIImage {
     switch self {
     case .forkKnifePlaceholder:
       return UIImage(systemName: "fork.knife")!
+    case .playFill:
+      return UIImage(systemName: "play.fill")!
     }
   }
 }

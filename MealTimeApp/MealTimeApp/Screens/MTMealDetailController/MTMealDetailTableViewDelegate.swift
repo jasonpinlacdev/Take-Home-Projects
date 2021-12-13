@@ -26,4 +26,8 @@ extension MTMealDetailTableViewDelegate: UITableViewDelegate {
     return UITableView.automaticDimension
   }
   
+  func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    return false
+  }
+  
 }

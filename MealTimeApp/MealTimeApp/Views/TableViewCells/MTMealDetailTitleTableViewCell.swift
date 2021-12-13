@@ -39,7 +39,7 @@ class MTMealDetailTitleTableViewCell: UITableViewCell {
   private func configureLayout() {
     self.contentView.addSubview(self.titleLabel)
     NSLayoutConstraint.activate([
-      self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+      self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 25),
       self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
       self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
       self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),

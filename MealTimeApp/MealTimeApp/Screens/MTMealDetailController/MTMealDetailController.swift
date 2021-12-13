@@ -55,10 +55,10 @@ class MTMealDetailController: UIViewController {
     tableView.register(MTMealDetailTitleTableViewCell.self, forCellReuseIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailIngredientTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailPreparationTableViewCell.self, forCellReuseIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier)
+    tableView.register(MTMealDetailYoutubeTableViewCell.self, forCellReuseIdentifier: MTMealDetailYoutubeTableViewCell.reuseIdentifier)
     tableView.dataSource = self.tableViewDataSource
     tableView.delegate = self.tableViewDelegate
     tableView.separatorStyle = .none
-    tableView.allowsSelection = false
     tableView.estimatedRowHeight = UITableView.automaticDimension
   }
   
