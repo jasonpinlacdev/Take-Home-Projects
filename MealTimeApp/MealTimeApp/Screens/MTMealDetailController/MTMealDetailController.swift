@@ -35,6 +35,7 @@ class MTMealDetailController: UIViewController {
   
   private func configure() {
     self.view.backgroundColor = .systemBackground
+    self.navigationItem.largeTitleDisplayMode = .never
   }
   
   private func configureTableViewLayout() {
@@ -50,12 +51,15 @@ class MTMealDetailController: UIViewController {
   }
   
   private func configureTableView() {
-    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier)
-    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier)
-    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
-    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier)
-    self.tableView.dataSource = self.tableViewDataSource
-    self.tableViewDelegate = self.tableViewDelegate
+    tableView.register(MTMealDetailBannerTableViewCell.self, forCellReuseIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier)
+    tableView.register(MTMealDetailTitleTableViewCell.self, forCellReuseIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier)
+    tableView.register(MTMealDetailIngredientTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
+    tableView.register(MTMealDetailPreparationTableViewCell.self, forCellReuseIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier)
+    tableView.dataSource = self.tableViewDataSource
+    tableView.delegate = self.tableViewDelegate
+    tableView.separatorStyle = .none
+    tableView.allowsSelection = false
+    tableView.estimatedRowHeight = UITableView.automaticDimension
   }
   
 }

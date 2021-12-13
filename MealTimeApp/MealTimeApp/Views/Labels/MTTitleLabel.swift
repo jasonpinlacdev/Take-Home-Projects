@@ -20,8 +20,9 @@ class MTTitleLabel: UILabel {
   
   private func configure() {
     self.numberOfLines = 0
+//    self.lineBreakMode = .byWordWrapping
     self.adjustsFontSizeToFitWidth = true
-    self.minimumScaleFactor = 0.9
+    self.minimumScaleFactor = 0.70
     self.text = "Placeholder"
     self.textAlignment = .center
     self.font = UIFont.preferredFont(forTextStyle: .largeTitle)

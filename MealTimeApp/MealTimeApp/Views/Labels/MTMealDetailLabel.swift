@@ -1,5 +1,5 @@
 //
-//  MTThumbnailImageView.swift
+//  MTMealDetailLabel.swift
 //  MealTimeApp
 //
 //  Created by Jason Pinlac on 12/13/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MTThumbnailImageView: UIImageView {
+class MTMealDetailLabel: UILabel {
 
   init() {
     super.init(frame: .zero)
@@ -19,13 +19,11 @@ class MTThumbnailImageView: UIImageView {
   }
   
   private func configure() {
-    self.image = MTSymbol.forkKnifePlaceholder.image
-    self.contentMode = .scaleAspectFill
-    self.tintColor = UIColor.systemGray3
-    self.backgroundColor = UIColor.systemGray6
-    self.layer.cornerRadius = 5
-    self.clipsToBounds = true
     self.translatesAutoresizingMaskIntoConstraints = false
+    self.backgroundColor = .systemGray4
+    self.layer.cornerRadius = 5
+    self.textAlignment = .center
+    self.clipsToBounds = true
   }
-  
+
 }

@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum MTMealDetailTableViewSection: String, CaseIterable {
+  case title = "Title"
+  case banner = "Banner"
+  case ingredients = "Ingredients"
+  case procedures = "Procedures"
+}
+
+
 class MTMealDetailTableViewDataSource: NSObject {
 
   private weak var mealDetailController: MTMealDetailController!
@@ -20,19 +28,15 @@ class MTMealDetailTableViewDataSource: NSObject {
 extension MTMealDetailTableViewDataSource: UITableViewDataSource {
 
   func numberOfSections(in tableView: UITableView) -> Int {
-    4
+    MTMealDetailTableViewSection.allCases.count
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
-    case 0:
-      return nil
-    case 1:
-      return nil
     case 2:
-      return "Ingredients"
+      return MTMealDetailTableViewSection.ingredients.rawValue
     case 3:
-      return "Preparation"
+      return MTMealDetailTableViewSection.procedures.rawValue
     default:
       return nil
     }
@@ -54,16 +58,24 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let mealDetail = mealDetailController.mealDetail
     switch indexPath.section {
     case 0:
-      guard let titleCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailTitleTableViewCell else { fatalError("Failed to dequeue a MTMealDetailTitleTableViewCell.") }
-      
-    case 1:
       guard let bannerCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailBannerTableViewCell else { fatalError("Failed to dequeue a MTMealDetailBannerTableViewCell.") }
+      bannerCell.set(thumbnailUrlString: mealDetail.thumbnailURL)
+      return bannerCell
+    case 1:
+      guard let titleCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailTitleTableViewCell else { fatalError("Failed to dequeue a MTMealDetailTitleTableViewCell.") }
+      titleCell.set(title: mealDetail.name)
+      return titleCell
     case 2:
       guard let ingredientCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailIngredientTableViewCell else { fatalError("Failed to dequeue a MTMealDetailIngredientTableViewCell.") }
+      ingredientCell.set(ingredientAndMeasurement: mealDetail.ingredientsWithMeasurements[indexPath.row])
+      return ingredientCell
     case 3:
       guard let preparationCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailPreparationTableViewCell else { fatalError("Failed to dequeue a MTMealDetailPreparationTableViewCell.") }
+      preparationCell.set(preparation: mealDetail.preparations[indexPath.row])
+      return preparationCell
     default:
       fatalError("Error. No cell should be dequeued.")
     }
