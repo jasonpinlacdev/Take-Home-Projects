@@ -48,7 +48,7 @@ class MTNetworkManager {
   }
   
   
-  func getMealDetails(for mealId: String, completionHandler: @escaping (Result<[MTMealDetail], MTNetworkingError>) -> Void) {
+  func getMealDetail(for mealId: String, completionHandler: @escaping (Result<MTMealDetail, MTNetworkingError>) -> Void) {
     let endPoint = baseURL + "lookup.php?i=\(mealId)"
     guard let url = URL(string: endPoint) else { completionHandler(.failure(.invalidURL)); return }
     let task =  URLSession.shared.dataTask(with: url) { data, response, error in
@@ -57,7 +57,8 @@ class MTNetworkManager {
       guard let data: Data = data else { completionHandler(.failure(.dataError)); return }
       guard let mealDetailsResponse = try? JSONDecoder().decode(MTMealDetailsResponse.self, from: data) else { completionHandler(.failure(.dataDecodingError)); return}
       let mealDetails: [MTMealDetail] = mealDetailsResponse.mealDetails.sorted { $0.name.lowercased() < $1.name.lowercased() }
-      completionHandler(.success(mealDetails))
+      guard !mealDetails.isEmpty else { completionHandler(.failure(.dataError)); return}
+      completionHandler(.success(mealDetails[0]))
     }
     task.resume()
   }

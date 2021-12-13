@@ -12,7 +12,7 @@ class MTCategoriesCollectionViewDelegateFlowLayout: NSObject {
   
   private let numberOfItemsPerRow: CGFloat
   private let spacingBetweenItems: CGFloat
-  private var categoriesController: MTCategoriesController
+  private weak var categoriesController: MTCategoriesController!
   
   init(numberOfItemsPerRow: CGFloat, spacingBetweenItems: CGFloat, categoriesController: MTCategoriesController) {
     self.numberOfItemsPerRow = numberOfItemsPerRow
