@@ -1,5 +1,5 @@
 //
-//  MTMealDetailPreparationTableViewCell.swift
+//  MTMealDetailIngredientsTableViewCell.swift
 //  MealTimeApp
 //
 //  Created by Jason Pinlac on 12/13/21.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MTMealDetailPreparationTableViewCell: UITableViewCell {
+class MTMealDetailIngredientTableViewCell: UITableViewCell {
 
-  static let reuseIdentifier = String(describing: MTMealDetailPreparationTableViewCell.self)
+  static let reuseIdentifier = String(describing: MTMealDetailIngredientTableViewCell.self)
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,5 +29,5 @@ class MTMealDetailPreparationTableViewCell: UITableViewCell {
   private func configureLayout() {
     
   }
-  
+
 }

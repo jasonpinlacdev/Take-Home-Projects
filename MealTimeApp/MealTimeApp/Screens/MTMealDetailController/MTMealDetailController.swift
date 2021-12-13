@@ -12,22 +12,13 @@ class MTMealDetailController: UIViewController {
   let mealDetail: MTMealDetail
   
   let tableView = UITableView()
-//  lazy var tableViewDataSource = MTMealDetailTableViewDataSource(mealDetailController: self)
+  lazy var tableViewDataSource = MTMealDetailTableViewDataSource(mealDetailController: self)
   lazy var tableViewDelegate = MTMealDetailTableViewDelegate(mealDetailController: self)
   
   
   init(mealDetail: MTMealDetail) {
     self.mealDetail = mealDetail
     super.init(nibName: nil, bundle: nil)
-    
-    print(mealDetail.ingredientsWithMeasurements)
-    print(mealDetail.ingredientsWithMeasurements.count)
-    print()
-    print(mealDetail.preparations)
-    print(mealDetail.preparations.count)
-    print()
-  
-    
   }
   
   required init?(coder: NSCoder) {
@@ -59,7 +50,11 @@ class MTMealDetailController: UIViewController {
   }
   
   private func configureTableView() {
-//    self.tableView.dataSource = self.tableViewDataSource
+    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier)
+    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier)
+    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
+    tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier)
+    self.tableView.dataSource = self.tableViewDataSource
     self.tableViewDelegate = self.tableViewDelegate
   }
   
