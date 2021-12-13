@@ -12,7 +12,7 @@ enum MTMealDetailTableViewSection: String, CaseIterable {
   case title = "Title"
   case videoDemonstration = "Video Demonstration"
   case ingredients = "Ingredients"
-  case procedures = "Procedures"
+  case preparations = "Preparations"
 }
 
 
@@ -40,7 +40,7 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     case 3:
       return MTMealDetailTableViewSection.ingredients.rawValue
     case 4:
-      return MTMealDetailTableViewSection.procedures.rawValue
+      return MTMealDetailTableViewSection.preparations.rawValue
     default:
       return nil
     }
