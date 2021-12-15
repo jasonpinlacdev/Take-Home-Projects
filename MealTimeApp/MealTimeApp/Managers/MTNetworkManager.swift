@@ -66,20 +66,20 @@ class MTNetworkManager {
   
   func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage, String), MTNetworkingError>) -> Void) {
     guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return }
-//    let thumbNailImageCacheKey = NSString(string: urlString)
-//    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
-//      completionHandler(.success( (thumnailImage, urlString) ))
-//    } else {
+    let thumbNailImageCacheKey = NSString(string: urlString)
+    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
+      completionHandler(.success( (thumnailImage, urlString) ))
+    } else {
       let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
         guard error == nil else { completionHandler(.failure(.localError)); return }
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
         guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
         guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
-//        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
+        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
         completionHandler(.success( (thumbnailImage, urlString) ))
       }
       task.resume()
-//    }
+    }
   }
 
 }

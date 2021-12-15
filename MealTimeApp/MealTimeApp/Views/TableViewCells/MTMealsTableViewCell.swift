@@ -30,6 +30,7 @@ class MTMealsTableViewCell: UITableViewCell {
   
   
   func set(_ meal: MTMeal) {
+    self.mostRecentThumbnailURLSet = meal.thumbnailURL
     self.mealsBodyLabel.text = meal.name
     MTNetworkManager.shared.getThumbnail(from: meal.thumbnailURL) { [weak self] result in
       guard let self = self else { return }
