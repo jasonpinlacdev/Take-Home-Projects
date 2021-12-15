@@ -26,26 +26,6 @@ class MTCategoriesCollectionViewDelegateFlowLayout: NSObject {
 
 extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let diffableDataSource = collectionView.dataSource as? MTCategoriesCollectionViewDiffableDataSource else { return }
-    guard let category = diffableDataSource.itemIdentifier(for: indexPath) else { return }
-    categoriesController.showLoadingView()
-    MTNetworkManager.shared.getMeals(for: category.name) { [weak self] result in
-      DispatchQueue.main.async {
-        self?.categoriesController.removeLoadingView()
-        switch result {
-        case .success(let meals):
-          let mealsController = MTMealsViewController(meals: meals)
-          mealsController.title = "\(category.name) Dishes"
-          self?.categoriesController.navigationController?.pushViewController(mealsController, animated: true)
-        case .failure(let error):
-          self?.categoriesController.presentAlert(error: error)
-        }
-      }
-    }
-  }
-  
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let horizontalSpace = collectionView.bounds.width
     let paddingSpace = (numberOfItemsPerRow + 1) * spacingBetweenItems
@@ -67,6 +47,26 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: spacingBetweenItems, left: spacingBetweenItems, bottom: spacingBetweenItems, right: spacingBetweenItems)
+  }
+  
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let diffableDataSource = collectionView.dataSource as? MTCategoriesCollectionViewDiffableDataSource else { return }
+    guard let category = diffableDataSource.itemIdentifier(for: indexPath) else { return }
+    categoriesController.showLoadingView()
+    MTNetworkManager.shared.getMeals(for: category.name) { [weak self] result in
+      DispatchQueue.main.async {
+        self?.categoriesController.removeLoadingView()
+        switch result {
+        case .success(let meals):
+          let mealsController = MTMealsViewController(meals: meals)
+          mealsController.title = "\(category.name) Dishes"
+          self?.categoriesController.navigationController?.pushViewController(mealsController, animated: true)
+        case .failure(let error):
+          self?.categoriesController.presentAlert(error: error)
+        }
+      }
+    }
   }
   
 }

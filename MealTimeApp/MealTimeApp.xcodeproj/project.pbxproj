@@ -113,11 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				E13BEABF2767150600368ABF /* MTMealsTableViewCell.swift */,
-				E13BEACE2767352700368ABF /* MTMealDetailBannerTableViewCell.swift */,
-				E13BEACC2767350100368ABF /* MTMealDetailTitleTableViewCell.swift */,
-				E13BEAD12767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift */,
-				E13BEAD32767358A00368ABF /* MTMealDetailPreparationTableViewCell.swift */,
-				E13BEADD2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift */,
+				E13BEADF276A8D8900368ABF /* MTMealDetailTableViewCells */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -156,6 +152,18 @@
 				E13BEAD7276735D400368ABF /* MTMealDetailTableViewDelegate.swift */,
 			);
 			path = MTMealDetailController;
+			sourceTree = "<group>";
+		};
+		E13BEADF276A8D8900368ABF /* MTMealDetailTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E13BEACE2767352700368ABF /* MTMealDetailBannerTableViewCell.swift */,
+				E13BEACC2767350100368ABF /* MTMealDetailTitleTableViewCell.swift */,
+				E13BEAD12767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift */,
+				E13BEAD32767358A00368ABF /* MTMealDetailPreparationTableViewCell.swift */,
+				E13BEADD2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift */,
+			);
+			path = MTMealDetailTableViewCells;
 			sourceTree = "<group>";
 		};
 		E16536F8276589420019E76F = {

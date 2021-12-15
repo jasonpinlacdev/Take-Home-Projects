@@ -12,7 +12,6 @@ class MTMealDetailBannerTableViewCell: UITableViewCell {
   static let reuseIdentifier = String(describing: MTMealDetailBannerTableViewCell.self)
   let bannerImageView = MTThumbnailImageView()
   
-  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configureLayout()
@@ -27,7 +26,7 @@ class MTMealDetailBannerTableViewCell: UITableViewCell {
   func set(thumbnailUrlString: String) {
     MTNetworkManager.shared.getThumbnail(from: thumbnailUrlString) { [weak self] result in
       switch result {
-      case .success(let thumbnailImage):
+      case .success( (let thumbnailImage, _) ):
         DispatchQueue.main.async {
           self?.bannerImageView.image = thumbnailImage
         }

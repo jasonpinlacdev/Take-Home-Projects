@@ -20,7 +20,7 @@ class MTMealDetailLabel: UILabel {
   
   private func configure() {
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.backgroundColor = .systemGray4
+    self.backgroundColor = .systemGray6
     self.layer.cornerRadius = 5
     self.textAlignment = .center
     self.clipsToBounds = true
