@@ -18,9 +18,9 @@ enum MTMealDetailTableViewSection: String, CaseIterable {
 
 class MTMealDetailTableViewDataSource: NSObject {
 
-  private weak var mealDetailController: MTMealDetailController!
+  private weak var mealDetailController: MTMealDetailViewController!
 
-  init(mealDetailController: MTMealDetailController) {
+  init(mealDetailController: MTMealDetailViewController) {
     self.mealDetailController = mealDetailController
   }
 

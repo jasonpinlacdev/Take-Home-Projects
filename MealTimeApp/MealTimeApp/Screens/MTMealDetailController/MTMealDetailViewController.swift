@@ -7,10 +7,9 @@
 
 import UIKit
 
-class MTMealDetailController: UIViewController {
+class MTMealDetailViewController: UIViewController {
   
   let mealDetail: MTMealDetail
-  
   let tableView = UITableView()
   lazy var tableViewDataSource = MTMealDetailTableViewDataSource(mealDetailController: self)
   lazy var tableViewDelegate = MTMealDetailTableViewDelegate(mealDetailController: self)

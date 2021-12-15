@@ -11,7 +11,7 @@ import SafariServices
 class MTMealDetailYoutubeTableViewCell: UITableViewCell {
   
   static let reuseIdentifier = String(describing: MTMealDetailYoutubeTableViewCell.self)
-  weak var mealDetailController: MTMealDetailController?
+  weak var mealDetailController: MTMealDetailViewController?
   var youtubeURLString: String?
   
   let youtubeButton: UIButton = {

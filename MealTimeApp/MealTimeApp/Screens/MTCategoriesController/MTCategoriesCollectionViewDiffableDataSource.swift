@@ -8,14 +8,14 @@
 import UIKit
 
 
-enum MTCategoriesSection {
+enum MTCategoriesCollectionViewSection {
   case main
 }
 
-class MTCategoriesCollectionViewDiffableDataSource: UICollectionViewDiffableDataSource<MTCategoriesSection, MTCategory> {
+class MTCategoriesCollectionViewDiffableDataSource: UICollectionViewDiffableDataSource<MTCategoriesCollectionViewSection, MTCategory> {
 
   func update(with categories: [MTCategory]) {
-    var snapshot = NSDiffableDataSourceSnapshot<MTCategoriesSection, MTCategory>()
+    var snapshot = NSDiffableDataSourceSnapshot<MTCategoriesCollectionViewSection, MTCategory>()
     snapshot.appendSections([.main])
     snapshot.appendItems(categories, toSection: .main)
     self.apply(snapshot)

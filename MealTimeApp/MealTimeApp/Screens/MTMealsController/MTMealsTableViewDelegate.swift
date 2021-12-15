@@ -9,9 +9,9 @@ import UIKit
 
 class MTMealsTableViewDelegate: NSObject {
   
-  private weak var mealsController: MTMealsController!
+  private weak var mealsController: MTMealsViewController!
   
-  init(mealsController: MTMealsController) {
+  init(mealsController: MTMealsViewController) {
     self.mealsController = mealsController
     super.init()
   }
@@ -30,7 +30,7 @@ extension MTMealsTableViewDelegate: UITableViewDelegate {
         self?.mealsController.removeLoadingView()
         switch result {
         case .success(let mealDetail):
-          let mealDetailController = MTMealDetailController(mealDetail: mealDetail)
+          let mealDetailController = MTMealDetailViewController(mealDetail: mealDetail)
           self?.mealsController.navigationController?.pushViewController(mealDetailController, animated: true)
         case .failure(let error):
           self?.mealsController.presentAlert(error: error)

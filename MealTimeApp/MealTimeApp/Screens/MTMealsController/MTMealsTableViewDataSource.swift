@@ -9,9 +9,9 @@ import UIKit
 
 class MTMealsTableViewDataSource: NSObject {
   
-  private weak var mealsController: MTMealsController!
+  private weak var mealsController: MTMealsViewController!
   
-  init(mealsController: MTMealsController) {
+  init(mealsController: MTMealsViewController) {
     self.mealsController = mealsController
     super.init()
   }

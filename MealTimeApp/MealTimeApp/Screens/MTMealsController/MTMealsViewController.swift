@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MTMealsController: UIViewController {
+class MTMealsViewController: UIViewController {
   
   var meals: [MTMeal]
   let tableView = UITableView()

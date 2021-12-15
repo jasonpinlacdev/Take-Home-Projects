@@ -23,13 +23,13 @@
 		E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB22766B89700368ABF /* MTSymbol.swift */; };
 		E13BEAB52766BBDC00368ABF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */; };
 		E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB62766EEF000368ABF /* UIView+Ext.swift */; };
-		E13BEABA2766F94700368ABF /* MTMealsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB92766F94700368ABF /* MTMealsController.swift */; };
+		E13BEABA2766F94700368ABF /* MTMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB92766F94700368ABF /* MTMealsViewController.swift */; };
 		E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */; };
 		E13BEABE276706D700368ABF /* MTMealsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */; };
 		E13BEAC02767150600368ABF /* MTMealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABF2767150600368ABF /* MTMealsTableViewCell.swift */; };
 		E13BEAC22767164B00368ABF /* MTThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAC12767164B00368ABF /* MTThumbnailImageView.swift */; };
 		E13BEAC42767168500368ABF /* MTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAC32767168500368ABF /* MTBodyLabel.swift */; };
-		E13BEACB276727BF00368ABF /* MTMealDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEACA276727BF00368ABF /* MTMealDetailController.swift */; };
+		E13BEACB276727BF00368ABF /* MTMealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEACA276727BF00368ABF /* MTMealDetailViewController.swift */; };
 		E13BEACD2767350100368ABF /* MTMealDetailTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEACC2767350100368ABF /* MTMealDetailTitleTableViewCell.swift */; };
 		E13BEACF2767352700368ABF /* MTMealDetailBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEACE2767352700368ABF /* MTMealDetailBannerTableViewCell.swift */; };
 		E13BEAD22767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAD12767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift */; };
@@ -43,7 +43,7 @@
 		E1653707276589420019E76F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1653706276589420019E76F /* SceneDelegate.swift */; };
 		E165370E276589470019E76F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E165370D276589470019E76F /* Assets.xcassets */; };
 		E1653711276589470019E76F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E165370F276589470019E76F /* LaunchScreen.storyboard */; };
-		E165372027658C900019E76F /* MTCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165371F27658C900019E76F /* MTCategoriesController.swift */; };
+		E165372027658C900019E76F /* MTCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165371F27658C900019E76F /* MTCategoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,13 +63,13 @@
 		E13BEAB22766B89700368ABF /* MTSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTSymbol.swift; sourceTree = "<group>"; };
 		E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13BEAB62766EEF000368ABF /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		E13BEAB92766F94700368ABF /* MTMealsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsController.swift; sourceTree = "<group>"; };
+		E13BEAB92766F94700368ABF /* MTMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsViewController.swift; sourceTree = "<group>"; };
 		E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDataSource.swift; sourceTree = "<group>"; };
 		E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDelegate.swift; sourceTree = "<group>"; };
 		E13BEABF2767150600368ABF /* MTMealsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewCell.swift; sourceTree = "<group>"; };
 		E13BEAC12767164B00368ABF /* MTThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTThumbnailImageView.swift; sourceTree = "<group>"; };
 		E13BEAC32767168500368ABF /* MTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTBodyLabel.swift; sourceTree = "<group>"; };
-		E13BEACA276727BF00368ABF /* MTMealDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailController.swift; sourceTree = "<group>"; };
+		E13BEACA276727BF00368ABF /* MTMealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailViewController.swift; sourceTree = "<group>"; };
 		E13BEACC2767350100368ABF /* MTMealDetailTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailTitleTableViewCell.swift; sourceTree = "<group>"; };
 		E13BEACE2767352700368ABF /* MTMealDetailBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailBannerTableViewCell.swift; sourceTree = "<group>"; };
 		E13BEAD12767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailIngredientTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		E165370D276589470019E76F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1653710276589470019E76F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1653712276589470019E76F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E165371F27658C900019E76F /* MTCategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategoriesController.swift; sourceTree = "<group>"; };
+		E165371F27658C900019E76F /* MTCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		E13BEAB82766F91500368ABF /* MTMealsController */ = {
 			isa = PBXGroup;
 			children = (
-				E13BEAB92766F94700368ABF /* MTMealsController.swift */,
+				E13BEAB92766F94700368ABF /* MTMealsViewController.swift */,
 				E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */,
 				E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */,
 			);
@@ -151,7 +151,7 @@
 		E13BEAC92767279E00368ABF /* MTMealDetailController */ = {
 			isa = PBXGroup;
 			children = (
-				E13BEACA276727BF00368ABF /* MTMealDetailController.swift */,
+				E13BEACA276727BF00368ABF /* MTMealDetailViewController.swift */,
 				E13BEAD5276735C900368ABF /* MTMealDetailTableViewDataSource.swift */,
 				E13BEAD7276735D400368ABF /* MTMealDetailTableViewDelegate.swift */,
 			);
@@ -273,7 +273,7 @@
 		E165372227658CBE0019E76F /* MTCategoriesController */ = {
 			isa = PBXGroup;
 			children = (
-				E165371F27658C900019E76F /* MTCategoriesController.swift */,
+				E165371F27658C900019E76F /* MTCategoriesViewController.swift */,
 				E13BEAAC27669B2A00368ABF /* MTCategoriesCollectionViewDiffableDataSource.swift */,
 				E13BEAAE27669C4B00368ABF /* MTCategoriesCollectionViewDelegateFlowLayout.swift */,
 			);
@@ -350,16 +350,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13BEACB276727BF00368ABF /* MTMealDetailController.swift in Sources */,
+				E13BEACB276727BF00368ABF /* MTMealDetailViewController.swift in Sources */,
 				E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */,
 				E1653705276589420019E76F /* AppDelegate.swift in Sources */,
 				E13BEAA727667EFC00368ABF /* UIViewController+Ext.swift in Sources */,
-				E165372027658C900019E76F /* MTCategoriesController.swift in Sources */,
+				E165372027658C900019E76F /* MTCategoriesViewController.swift in Sources */,
 				E13BEA9A2765ACFF00368ABF /* MTNetworkingError.swift in Sources */,
 				E13BEAC42767168500368ABF /* MTBodyLabel.swift in Sources */,
 				E13BEAD8276735D400368ABF /* MTMealDetailTableViewDelegate.swift in Sources */,
 				E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */,
-				E13BEABA2766F94700368ABF /* MTMealsController.swift in Sources */,
+				E13BEABA2766F94700368ABF /* MTMealsViewController.swift in Sources */,
 				E13BEAA12765E4D800368ABF /* MTMealDetail.swift in Sources */,
 				E13BEAD22767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift in Sources */,
 				E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */,

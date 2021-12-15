@@ -12,9 +12,9 @@ class MTCategoriesCollectionViewDelegateFlowLayout: NSObject {
   
   private let numberOfItemsPerRow: CGFloat
   private let spacingBetweenItems: CGFloat
-  private weak var categoriesController: MTCategoriesController!
+  private weak var categoriesController: MTCategoriesViewController!
   
-  init(numberOfItemsPerRow: CGFloat, spacingBetweenItems: CGFloat, categoriesController: MTCategoriesController) {
+  init(numberOfItemsPerRow: CGFloat, spacingBetweenItems: CGFloat, categoriesController: MTCategoriesViewController) {
     self.numberOfItemsPerRow = numberOfItemsPerRow
     self.spacingBetweenItems = spacingBetweenItems
     self.categoriesController = categoriesController
@@ -35,7 +35,7 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
         self?.categoriesController.removeLoadingView()
         switch result {
         case .success(let meals):
-          let mealsController = MTMealsController(meals: meals)
+          let mealsController = MTMealsViewController(meals: meals)
           mealsController.title = "\(category.name) Dishes"
           self?.categoriesController.navigationController?.pushViewController(mealsController, animated: true)
         case .failure(let error):

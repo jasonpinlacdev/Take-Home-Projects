@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MTCategoriesController: UIViewController {
+class MTCategoriesViewController: UIViewController {
   
   var categories: [MTCategory] = []
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
