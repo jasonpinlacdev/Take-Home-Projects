@@ -32,7 +32,13 @@ extension MTMealsTableViewDataSource: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MTMealsTableViewCell.reuseIdentifier, for: indexPath) as? MTMealsTableViewCell else { fatalError() }
     let meal = mealsController.meals[indexPath.row]
-    cell.set(meal)
+    
+//    cell.mealsThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+//    cell.mealsBodyLabel.text = "Placeholder"
+    
+    //    cell.set(meal)
+    cell.improvedSet(meal)
+    
     return cell
   }
   

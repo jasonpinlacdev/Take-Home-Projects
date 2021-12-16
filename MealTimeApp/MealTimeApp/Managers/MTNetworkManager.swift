@@ -18,6 +18,32 @@ class MTNetworkManager {
   private init() { }
   
   
+  // TO DO
+  
+// 1 - FIX TABLEVIEW COLLECTIONVIEW GLITCH WITH CANCELING THE DATA TASK INSTEAD OF RUNNING THE GUARD CHECK AND ALSO THE PREPARE FOR REUSE
+  
+// 2 - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
+  
+// 3 - ADD UNIT TESTING AND MOCKS FOR DEPENDENCY INJECTION USING PROTOCOLS
+  
+// 4 - LOOK INTO CREATING THIS SAME PROJECT USING MVVM ARCHITECTURE
+  
+//
+//  func getCategories<T:Decodable>(completionHandler: @escaping (Result<[T], MTNetworkingError>) -> Void) {
+//    let endPoint = baseURL + "categories.php"
+//    guard let url = URL(string: endPoint) else { completionHandler(.failure(.invalidURL)); return }
+//    let task =  URLSession.shared.dataTask(with: url) { data, response, error in
+//      guard error == nil else { completionHandler(.failure(.localError)); return }
+//      guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
+//      guard let data = data else { completionHandler(.failure(.dataError)); return }
+//      guard let categoriesResponse = try? JSONDecoder().decode(MTCategoriesResponse.self, from: data) else { completionHandler(.failure(.dataDecodingError)); return }
+//      let categories: [MTCategory] = categoriesResponse.categories.sorted { $0.name.lowercased() < $1.name.lowercased() }
+//      completionHandler(.success(categories))
+//    }
+//    task.resume()
+//  }
+  
+  
   func getCategories(completionHandler: @escaping (Result<[MTCategory], MTNetworkingError>) -> Void) {
     let endPoint = baseURL + "categories.php"
     guard let url = URL(string: endPoint) else { completionHandler(.failure(.invalidURL)); return }
@@ -63,23 +89,49 @@ class MTNetworkManager {
     task.resume()
   }
   
-  
+    
   func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage, String), MTNetworkingError>) -> Void) {
     guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return }
-    let thumbNailImageCacheKey = NSString(string: urlString)
-    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
-      completionHandler(.success( (thumnailImage, urlString) ))
-    } else {
+//    let thumbNailImageCacheKey = NSString(string: urlString)
+//    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
+//      completionHandler(.success( (thumnailImage, urlString) ))
+//    }
+//    else {
       let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
         guard error == nil else { completionHandler(.failure(.localError)); return }
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
         guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
         guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
-        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
+//        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
         completionHandler(.success( (thumbnailImage, urlString) ))
       }
       task.resume()
-    }
+//    }
   }
+  
+  
+  func improvedGetThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage), MTNetworkingError>) -> Void) -> URLSessionDataTask? {
+    guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return nil }
+      
+//    let thumbNailImageCacheKey = NSString(string: urlString)
+//    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
+//      completionHandler(.success(thumnailImage))
+//      return nil
+//    }
+//    else {
+      let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        guard error == nil else { completionHandler(.failure(.localError)); return }
+        guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
+        guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
+        guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
+//        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
+        completionHandler(.success(thumbnailImage))
+      }
+      task.resume()
+      return task
+    }
+//  }
+    
+    
 
 }

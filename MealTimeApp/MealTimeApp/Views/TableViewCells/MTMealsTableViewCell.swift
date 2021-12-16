@@ -16,6 +16,8 @@ class MTMealsTableViewCell: UITableViewCell {
   
   var mostRecentThumbnailURLSet: String = ""
   
+  var currentDataTask: URLSessionDataTask?
+  
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,8 +32,9 @@ class MTMealsTableViewCell: UITableViewCell {
   
   
   func set(_ meal: MTMeal) {
-    self.mostRecentThumbnailURLSet = meal.thumbnailURL
     self.mealsBodyLabel.text = meal.name
+    
+    self.mostRecentThumbnailURLSet = meal.thumbnailURL
     MTNetworkManager.shared.getThumbnail(from: meal.thumbnailURL) { [weak self] result in
       guard let self = self else { return }
       DispatchQueue.main.async {
@@ -52,6 +55,29 @@ class MTMealsTableViewCell: UITableViewCell {
       }
     }
   }
+  
+  // this improved set in an improved implementation on the tableView/collectionView image setting bug when scrolling fast on a slow connection.
+  // we simply just cancel any previous network calls using the URLSession.shared.dataTask() instance returned.
+  // this makes sense because as we scroll, call the cellForRowItemAt, dequeue a cell, and set the thumbnail URLString for the network call to hit the API
+  // we don't care about any previous network calls to get the image thumbnail data. We only want the most recent thumbnail image from the most recent network request.
+  // So, we keep track of the previous dataTask doing the network call, stop it and track the new dataTask.
+  func improvedSet(_ meal: MTMeal) {
+    self.mealsBodyLabel.text = meal.name
+    
+    self.currentDataTask?.cancel()
+    self.currentDataTask = MTNetworkManager.shared.improvedGetThumbnail(from: meal.thumbnailURL) { [weak self] result in
+      guard let self = self else { return }
+      DispatchQueue.main.async {
+        switch result {
+        case .success( let thumbnailImage ):
+          self.mealsThumbnailImageView.image = thumbnailImage
+        case .failure(_):
+          return
+        }
+      }
+    }
+  }
+  
   
   override func prepareForReuse() {
     super.prepareForReuse()

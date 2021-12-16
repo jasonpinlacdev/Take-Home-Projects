@@ -47,7 +47,11 @@ class MTCategoriesViewController: UIViewController {
     self.collectionView.register(MTCategoryCollectionViewCell.self, forCellWithReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier)
     self.collectionViewDiffableDataSource = MTCategoriesCollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, category in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? MTCategoryCollectionViewCell else { fatalError("Failed to dequeue a MTCategoryCollectionViewCell") }
-      cell.set(category)
+    
+//      cell.categoryThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+//      cell.categoryBodyLabel.text = "Placeholder"
+    
+      cell.improvedSet(category)
       return cell
     })
     collectionViewDiffableDataSource.update(with: self.categories)

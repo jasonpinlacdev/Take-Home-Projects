@@ -37,7 +37,7 @@ enum MTNetworkingError: Error {
     case .invalidURL:
       return "The url endpoint is invalid."
     case .localError:
-      return "Something went wrong. Please check your internet connection and relaunch the app."
+      return "Something went wrong. Please check your internet connection."
     case .serverError:
       return "Something is wrong with the server. Please try again"
     case .dataError:
