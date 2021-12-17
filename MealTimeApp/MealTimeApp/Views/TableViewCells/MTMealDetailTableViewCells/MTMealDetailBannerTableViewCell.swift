@@ -27,9 +27,7 @@ class MTMealDetailBannerTableViewCell: UITableViewCell {
     _ = MTNetworkManager.shared.improvedGetThumbnail(from: thumbnailUrlString) { [weak self] result in
       switch result {
       case .success(let thumbnailImage):
-        DispatchQueue.main.async {
-          self?.bannerImageView.image = thumbnailImage
-        }
+        DispatchQueue.main.async { self?.bannerImageView.image = thumbnailImage }
       case.failure(_):
         return
       }

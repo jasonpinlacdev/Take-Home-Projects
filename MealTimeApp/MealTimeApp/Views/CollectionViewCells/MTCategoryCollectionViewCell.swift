@@ -57,6 +57,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   
   
   // this improved set in an improved implementation on the tableView/collectionView image setting bug when scrolling fast on a slow connection.
+  // reason being is because we dont want a user wasting their data on network calls that run async in the background
   // we simply just cancel any previous network calls using the URLSession.shared.dataTask() instance returned.
   // this makes sense because as we scroll, call the cellForRowItemAt, dequeue a cell, and set the thumbnail URLString for the network call to hit the API
   // we don't care about any previous network calls to get the image thumbnail data. We only want the most recent thumbnail image from the most recent network request.
@@ -67,15 +68,13 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
     self.currentDataTask?.cancel()
     self.currentDataTask = MTNetworkManager.shared.improvedGetThumbnail(from: category.thumbnailURL) { [weak self] result in
       guard let self = self else { return }
-      DispatchQueue.main.async {
-
         switch result {
         case .success( let thumbnailImage ):
-          self.categoryThumbnailImageView.image = thumbnailImage
+          DispatchQueue.main.async { self.categoryThumbnailImageView.image = thumbnailImage }
         case .failure(_):
           return
         }
-      }
+
     }
   }
   
