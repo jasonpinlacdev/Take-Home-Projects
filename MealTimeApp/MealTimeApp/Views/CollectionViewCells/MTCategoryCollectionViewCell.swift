@@ -30,30 +30,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   
   
   
-//  // adding the urlString to guard on it is important.
-//  // becuase if we scroll through the tableView/collectionView fast, we are making a bunch of async calls that are running in the background.
-//  // Even with prepareforreuse we wont know which will end last IE the prepareForReuse or the async call to get the image and assign it to the imageview as the result. With this being the case, we can cancel the async operation but this might be tricky because we dont know the exact timing of when it ends and it complete before we cancel.
-//  // So instead, what we do is we check the last url for the image set to this cell as a stored property... IE mostRecentThumbnailURLSet... and check it against the return of all the async calls previously called(called because we scrolled fast) result IE a tuple of the (image, urlString).
-//  // Now, if they are a match then we set, if not we just return. The biggest improvement is we skip the glitch affect from the tableview/collectionview cell's image when scrolling fast and having a slow/fast connection.
-//  // case .success(let thumbnailImage, let urlString):
-//  // guard urlString == mostRecentThumbnailURLSet { else return }
-//  func set(_ category: MTCategory) {
-//    self.categoryBodyLabel.text = category.name
-//
-//    self.mostRecentThumbnailURLSet = category.thumbnailURL
-//    MTNetworkManager.shared.getThumbnail(from: category.thumbnailURL) { [weak self] result in
-//      guard let self = self else { return }
-//      DispatchQueue.main.async {
-//        switch result {
-//        case .success( (let thumbnailImage, let thumbnailURL) ):
-//          guard thumbnailURL == self.mostRecentThumbnailURLSet else { print("The thumbnail URL's are not equal. Returning before setting the image"); return }
-//          self.categoryThumbnailImageView.image = thumbnailImage
-//        case .failure(_):
-//          return
-//        }
-//      }
-//    }
-//  }
+
   
   
   // this improved set in an improved implementation on the tableView/collectionView image setting bug when scrolling fast on a slow connection.
@@ -66,7 +43,7 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
     self.categoryBodyLabel.text = category.name
     
     self.currentDataTask?.cancel()
-    self.currentDataTask = MTNetworkManager.shared.improvedGetThumbnail(from: category.thumbnailURL) { [weak self] result in
+    self.currentDataTask = MTNetworkManager.shared.getThumbnail(from: category.thumbnailURL) { [weak self] result in
       guard let self = self else { return }
         switch result {
         case .success( let thumbnailImage ):

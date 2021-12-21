@@ -62,7 +62,7 @@ class MTMealDetailViewController: UIViewController {
     tableView.dataSource = self.tableViewDataSource
     tableView.delegate = self.tableViewDelegate
     tableView.separatorStyle = .none
-    tableView.estimatedRowHeight = UITableView.automaticDimension
+//    tableView.estimatedRowHeight = UITableView.automaticDimension
   }
   
 }
