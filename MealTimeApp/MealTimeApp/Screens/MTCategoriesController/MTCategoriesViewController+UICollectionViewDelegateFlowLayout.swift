@@ -1,30 +1,14 @@
 //
-//  MTCategoriesCollectionViewDelegateFlowLayout.swift
+//  MTCategoriesViewController+UICollectionViewDelegateFlowLayout.swift
 //  MealTimeApp
 //
-//  Created by Jason Pinlac on 12/12/21.
+//  Created by Jason Pinlac on 12/21/21.
 //
 
 import UIKit
 
 
-class MTCategoriesCollectionViewDelegateFlowLayout: NSObject {
-  
-  private let numberOfItemsPerRow: CGFloat
-  private let spacingBetweenItems: CGFloat
-  private weak var categoriesController: MTCategoriesViewController!
-  
-  init(numberOfItemsPerRow: CGFloat, spacingBetweenItems: CGFloat, categoriesController: MTCategoriesViewController) {
-    self.numberOfItemsPerRow = numberOfItemsPerRow
-    self.spacingBetweenItems = spacingBetweenItems
-    self.categoriesController = categoriesController
-    super.init()
-  }
-  
-}
-
-
-extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
+extension MTCategoriesViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let horizontalSpace = collectionView.bounds.width
@@ -53,17 +37,17 @@ extension MTCategoriesCollectionViewDelegateFlowLayout: UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let diffableDataSource = collectionView.dataSource as? MTCategoriesCollectionViewDiffableDataSource else { return }
     guard let category = diffableDataSource.itemIdentifier(for: indexPath) else { return }
-    categoriesController.showLoadingView()
+    self.showLoadingView()
     MTNetworkManager.shared.getMeals(for: category.name) { [weak self] result in
       DispatchQueue.main.async {
-        self?.categoriesController.removeLoadingView()
+        self?.removeLoadingView()
         switch result {
         case .success(let meals):
           let mealsController = MTMealsViewController(meals: meals)
           mealsController.title = "\(category.name) Dishes"
-          self?.categoriesController.navigationController?.pushViewController(mealsController, animated: true)
+          self?.navigationController?.pushViewController(mealsController, animated: true)
         case .failure(let error):
-          self?.categoriesController.presentAlert(error: error)
+          self?.presentAlert(error: error)
         }
       }
     }

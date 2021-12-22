@@ -11,8 +11,10 @@ class MTCategoriesViewController: UIViewController {
   
   var categories: [MTCategory] = []
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-  lazy var collectionViewDelegateFlowLayout = MTCategoriesCollectionViewDelegateFlowLayout(numberOfItemsPerRow: 2, spacingBetweenItems: 5, categoriesController: self)
   var collectionViewDiffableDataSource: MTCategoriesCollectionViewDiffableDataSource!
+  
+  let numberOfItemsPerRow: CGFloat = 2
+  let spacingBetweenItems: CGFloat = 5.0
   
   
   override func viewDidLoad() {
@@ -39,7 +41,7 @@ class MTCategoriesViewController: UIViewController {
       collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
       collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
     ])
-    self.collectionView.delegate = collectionViewDelegateFlowLayout
+    self.collectionView.delegate = self
   }
   
   
@@ -50,9 +52,7 @@ class MTCategoriesViewController: UIViewController {
     
       // reset the cell to the placeholder state and cancel the last network request to download the thumbnail image data.
       cell.cancelThumbnailImageRequest()
-      cell.categoryThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
-      cell.categoryBodyLabel.text = "Placeholder"
-
+      cell.resetToPlaceholderState()
       cell.set(category)
       return cell
     })
@@ -77,3 +77,6 @@ class MTCategoriesViewController: UIViewController {
   }
   
 }
+
+
+

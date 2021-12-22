@@ -1,33 +1,22 @@
 //
-//  MTMealDetailTableViewDataSource.swift
+//  MTMealDetailViewController+UITableViewDataSource.swift
 //  MealTimeApp
 //
-//  Created by Jason Pinlac on 12/13/21.
+//  Created by Jason Pinlac on 12/21/21.
 //
 
 import UIKit
 
-enum MTMealDetailTableViewSection: String, CaseIterable {
-  case banner = "Banner"
-  case title = "Title"
-  case videoDemonstration = "Video Demonstration"
-  case ingredients = "Ingredients"
-  case preparations = "Preparations"
-}
-
-
-class MTMealDetailTableViewDataSource: NSObject {
-
-  private weak var mealDetailController: MTMealDetailViewController!
-
-  init(mealDetailController: MTMealDetailViewController) {
-    self.mealDetailController = mealDetailController
+extension MTMealDetailViewController: UITableViewDataSource {
+  
+  enum MTMealDetailTableViewSection: String, CaseIterable {
+    case banner = "Banner"
+    case title = "Title"
+    case videoDemonstration = "Video Demonstration"
+    case ingredients = "Ingredients"
+    case preparations = "Preparations"
   }
-
-}
-
-extension MTMealDetailTableViewDataSource: UITableViewDataSource {
-
+  
   func numberOfSections(in tableView: UITableView) -> Int {
     MTMealDetailTableViewSection.allCases.count
   }
@@ -56,9 +45,9 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
     case 2:
       return 1
     case 3:
-      return mealDetailController.mealDetail.ingredientsWithMeasurements.count
+      return self.mealDetail.ingredientsWithMeasurements.count
     case 4:
-      return mealDetailController.mealDetail.preparations.count
+      return self.mealDetail.preparations.count
     default:
       return 0
     }
@@ -66,7 +55,6 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let mealDetail = mealDetailController.mealDetail
     switch indexPath.section {
     case 0:
       guard let bannerCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailBannerTableViewCell else { fatalError("Failed to dequeue a MTMealDetailBannerTableViewCell.") }
@@ -78,7 +66,7 @@ extension MTMealDetailTableViewDataSource: UITableViewDataSource {
       return titleCell
     case 2:
       guard let youtubeCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailYoutubeTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailYoutubeTableViewCell else { fatalError("Failed to dequeue a MTMealDetailTitleTableViewCell.") }
-      if youtubeCell.mealDetailController == nil { youtubeCell.mealDetailController = self.mealDetailController }
+      if youtubeCell.mealDetailController == nil { youtubeCell.mealDetailController = self }
       youtubeCell.youtubeURLString = mealDetail.youtubeURL
       return youtubeCell
     case 3:

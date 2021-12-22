@@ -49,6 +49,12 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   }
   
   
+  func resetToPlaceholderState() {
+    self.categoryThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+    self.categoryBodyLabel.text = "Placeholder"
+  }
+  
+  
   // This function is called within cellForRow/Item at. Its responsibility is to cancel the previous network call/dataTask to get the thumbnail image data.
   func cancelThumbnailImageRequest() {
     self.currentDataTask?.cancel()
@@ -60,10 +66,10 @@ class MTCategoryCollectionViewCell: UICollectionViewCell {
   // this can cause images to populate the imageView on the cell slow or flaky and this means that the image from the last cell dequeue could still be there and not be in sync with other information on the cell set IE the label.
   // So, we prepare the cell for reuse by canceling the previous async datatask to get the thumbnail data as we scroll cells off the screen and get ready to dequeue them.
   // This ensures ONLY the very last network dataTask call to get the thumbnail is not canceled and will set when done. Every other previous async call made will cancel as we scroll off, prepare, and dequeue reusable cells.
-  override func prepareForReuse() {
-    super.prepareForReuse()
+//  override func prepareForReuse() {
+//    super.prepareForReuse()
 //    self.currentDataTask?.cancel()
-  }
+//  }
   
   
   private func configureLayout() {

@@ -11,8 +11,7 @@ class MTMealDetailViewController: UIViewController {
   
   let mealDetail: MTMealDetail
   let tableView = UITableView()
-  lazy var tableViewDataSource = MTMealDetailTableViewDataSource(mealDetailController: self)
-  lazy var tableViewDelegate = MTMealDetailTableViewDelegate(mealDetailController: self)
+
   
   
   init(mealDetail: MTMealDetail) {
@@ -59,10 +58,10 @@ class MTMealDetailViewController: UIViewController {
     tableView.register(MTMealDetailIngredientTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailPreparationTableViewCell.self, forCellReuseIdentifier: MTMealDetailPreparationTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailYoutubeTableViewCell.self, forCellReuseIdentifier: MTMealDetailYoutubeTableViewCell.reuseIdentifier)
-    tableView.dataSource = self.tableViewDataSource
-    tableView.delegate = self.tableViewDelegate
+    tableView.dataSource = self
+    tableView.delegate = self
     tableView.separatorStyle = .none
-//    tableView.estimatedRowHeight = UITableView.automaticDimension
   }
   
 }
+

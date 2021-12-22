@@ -50,6 +50,12 @@ class MTMealsTableViewCell: UITableViewCell {
   }
   
   
+  func resetToPlaceholderState() {
+    self.mealsThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+    self.mealsBodyLabel.text = "Placeholder"
+  }
+  
+  
   // This function is called within cellForRow/Item at. Its responsibility is to cancel the previous network call/dataTask to get the thumbnail image data.
   func cancelThumbnailImageRequest() {
     self.currentDataTask?.cancel()
