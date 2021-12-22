@@ -24,8 +24,6 @@
 		E13BEAB52766BBDC00368ABF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */; };
 		E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB62766EEF000368ABF /* UIView+Ext.swift */; };
 		E13BEABA2766F94700368ABF /* MTMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAB92766F94700368ABF /* MTMealsViewController.swift */; };
-		E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */; };
-		E13BEABE276706D700368ABF /* MTMealsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */; };
 		E13BEAC02767150600368ABF /* MTMealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEABF2767150600368ABF /* MTMealsTableViewCell.swift */; };
 		E13BEAC22767164B00368ABF /* MTThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAC12767164B00368ABF /* MTThumbnailImageView.swift */; };
 		E13BEAC42767168500368ABF /* MTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAC32767168500368ABF /* MTBodyLabel.swift */; };
@@ -65,8 +63,6 @@
 		E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13BEAB62766EEF000368ABF /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E13BEAB92766F94700368ABF /* MTMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsViewController.swift; sourceTree = "<group>"; };
-		E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDataSource.swift; sourceTree = "<group>"; };
-		E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewDelegate.swift; sourceTree = "<group>"; };
 		E13BEABF2767150600368ABF /* MTMealsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealsTableViewCell.swift; sourceTree = "<group>"; };
 		E13BEAC12767164B00368ABF /* MTThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTThumbnailImageView.swift; sourceTree = "<group>"; };
 		E13BEAC32767168500368ABF /* MTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTBodyLabel.swift; sourceTree = "<group>"; };
@@ -105,8 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				E13BEAB92766F94700368ABF /* MTMealsViewController.swift */,
-				E13BEABB276706C900368ABF /* MTMealsTableViewDataSource.swift */,
-				E13BEABD276706D700368ABF /* MTMealsTableViewDelegate.swift */,
 			);
 			path = MTMealsController;
 			sourceTree = "<group>";
@@ -362,7 +356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13BEACB276727BF00368ABF /* MTMealDetailViewController.swift in Sources */,
-				E13BEABC276706C900368ABF /* MTMealsTableViewDataSource.swift in Sources */,
 				E1653705276589420019E76F /* AppDelegate.swift in Sources */,
 				E13BEAA727667EFC00368ABF /* UIViewController+Ext.swift in Sources */,
 				E165372027658C900019E76F /* MTCategoriesViewController.swift in Sources */,
@@ -392,7 +385,6 @@
 				E13BEAD6276735C900368ABF /* MTMealDetailTableViewDataSource.swift in Sources */,
 				E13BEA922765A18100368ABF /* MTCategory.swift in Sources */,
 				E13BEA9F2765D0E300368ABF /* MTNavigationController.swift in Sources */,
-				E13BEABE276706D700368ABF /* MTMealsTableViewDelegate.swift in Sources */,
 				E13BEAB52766BBDC00368ABF /* UIColor+Ext.swift in Sources */,
 				E13BEA942765A2B500368ABF /* MTMeal.swift in Sources */,
 				E13BEAB12766A11500368ABF /* MTCategoryCollectionViewCell.swift in Sources */,

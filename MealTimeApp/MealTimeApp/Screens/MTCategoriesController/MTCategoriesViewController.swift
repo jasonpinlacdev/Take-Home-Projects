@@ -48,10 +48,12 @@ class MTCategoriesViewController: UIViewController {
     self.collectionViewDiffableDataSource = MTCategoriesCollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, category in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? MTCategoryCollectionViewCell else { fatalError("Failed to dequeue a MTCategoryCollectionViewCell") }
     
-//      cell.categoryThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
-//      cell.categoryBodyLabel.text = "Placeholder"
-    
-      cell.improvedSet(category)
+      // reset the cell to the placeholder state and cancel the last network request to download the thumbnail image data.
+      cell.cancelThumbnailImageRequest()
+      cell.categoryThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+      cell.categoryBodyLabel.text = "Placeholder"
+
+      cell.set(category)
       return cell
     })
     collectionViewDiffableDataSource.update(with: self.categories)

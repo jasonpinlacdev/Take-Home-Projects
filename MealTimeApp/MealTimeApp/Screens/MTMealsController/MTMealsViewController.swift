@@ -11,10 +11,8 @@ class MTMealsViewController: UIViewController {
   
   var meals: [MTMeal]
   let tableView = UITableView()
-  lazy var tableViewDataSource = MTMealsTableViewDataSource(mealsController: self)
-  lazy var tableViewDelegate = MTMealsTableViewDelegate(mealsController: self)
   
-  
+
   init(meals: [MTMeal]) {
     self.meals = meals
     super.init(nibName: nil, bundle: nil)
@@ -53,8 +51,64 @@ class MTMealsViewController: UIViewController {
   
   private func configureTableView() {
     tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealsTableViewCell.reuseIdentifier)
-    tableView.dataSource = self.tableViewDataSource
-    tableView.delegate = self.tableViewDelegate
+    tableView.dataSource = self
+    tableView.delegate = self
   }
   
+}
+
+
+extension MTMealsViewController: UITableViewDataSource {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    1
+  }
+  
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.meals.count
+  }
+  
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: MTMealsTableViewCell.reuseIdentifier, for: indexPath) as? MTMealsTableViewCell else { fatalError() }
+    
+    // reset the cell to the placeholder state and cancel the last network request to download the thumbnail image data.
+    cell.cancelThumbnailImageRequest()
+    cell.mealsThumbnailImageView.image = MTSymbol.forkKnifePlaceholder.image
+    cell.mealsBodyLabel.text = "Placeholder"
+    
+    let meal = self.meals[indexPath.row]
+    cell.set(meal)
+    return cell
+  }
+  
+}
+
+
+extension MTMealsViewController: UITableViewDelegate {
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let meal = self.meals[indexPath.row]
+    self.showLoadingView()
+    MTNetworkManager.shared.getMealDetail(for: meal.id) { [weak self] result in
+      DispatchQueue.main.async {
+        self?.removeLoadingView()
+        switch result {
+        case .success(let mealDetail):
+          let mealDetailController = MTMealDetailViewController(mealDetail: mealDetail)
+          self?.navigationController?.pushViewController(mealDetailController, animated: true)
+        case .failure(let error):
+          self?.presentAlert(error: error)
+        }
+      }
+    }
+  }
+
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 175
+  }
+
 }

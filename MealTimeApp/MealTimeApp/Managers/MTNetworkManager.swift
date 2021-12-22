@@ -12,21 +12,29 @@ class MTNetworkManager {
   
   static let shared = MTNetworkManager()
   let baseURL: String = "https://www.themealdb.com/api/json/v1/1/"
-  let thumbnailImageCache = NSCache<NSString, UIImage>()
+//  let thumbnailImageCache = NSCache<NSString, UIImage>()
   
   
   private init() { }
   
   
-  // TO DO
+// TO DO
   
-// 1 - DONE - FIX TABLEVIEW COLLECTIONVIEW GLITCH WITH CANCELING THE DATA TASK INSTEAD OF RUNNING THE GUARD CHECK AND ALSO THE PREPARE FOR REUSE
+// 0 - DONE - FIX TABLEVIEW COLLECTIONVIEW GLITCH WITH CANCELING THE DATA TASK INSTEAD OF RUNNING THE GUARD CHECK AND ALSO THE PREPARE FOR REUSE
   
-// 2 - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
+// 1 - refactor the ViewControllers so that I abstract away code in sperate file extensions rather than make subclasses
   
-// 3 - ADD UNIT TESTING AND MOCKS FOR DEPENDENCY INJECTION USING PROTOCOLS
+// 2 - refactor the ViewControllers so that the network calls occur within them.
   
-// 4 - LOOK INTO CREATING THIS SAME PROJECT USING MVVM ARCHITECTURE
+  
+
+// 3 - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
+  
+// 4 - ADD UNIT TESTING AND MOCKS FOR DEPENDENCY INJECTION USING PROTOCOLS
+  
+// 5 - LOOK INTO CREATING THIS SAME PROJECT USING MVVM ARCHITECTURE
+  
+
   
 // This function needs to be made with generics in mind.
 //  func getCategories<T:Decodable>(completionHandler: @escaping (Result<[T], MTNetworkingError>) -> Void) {
@@ -95,23 +103,23 @@ class MTNetworkManager {
   
   func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage), MTNetworkingError>) -> Void) -> URLSessionDataTask? {
     guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return nil }
-    let thumbNailImageCacheKey = NSString(string: urlString)
-    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
-      completionHandler(.success(thumnailImage))
-      return nil
-    }
-    else {
+//    let thumbNailImageCacheKey = NSString(string: urlString)
+//    if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
+//      completionHandler(.success(thumnailImage))
+//      return nil
+//    }
+//    else {
       let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
         guard error == nil else { completionHandler(.failure(.localError)); return }
         guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
         guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
         guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
-        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
+//        self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
         completionHandler(.success(thumbnailImage))
       }
       task.resume()
       return task
-    }
+//    }
   }
     
     

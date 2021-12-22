@@ -8,6 +8,9 @@
 import Foundation
 
 
+// var mostRecentThumbnailURLSet: String = ""
+
+
 //  func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage, String), MTNetworkingError>) -> Void) {
 //    guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return }
 //    let thumbNailImageCacheKey = NSString(string: urlString)
