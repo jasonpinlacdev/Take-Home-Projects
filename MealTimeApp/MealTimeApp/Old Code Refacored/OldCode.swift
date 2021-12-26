@@ -5,7 +5,7 @@
 //  Created by Jason Pinlac on 12/21/21.
 //
 
-import Foundation
+//import Foundation
 
 
 // var mostRecentThumbnailURLSet: String = ""
@@ -57,13 +57,13 @@ import Foundation
 //  }
 
 
-////adding the urlString to guard on it is important.
-////becuase if we scroll through the tableView/collectionView fast, we are making a bunch of async calls that are running in the background.
-////Even with prepareforreuse we wont know which will end last IE the prepareForReuse or the async call to get the image and assign it to the imageview as the result. With this being the case, we can cancel the async operation but this might be tricky because we dont know the exact timing of when it ends and it complete before we cancel.
-////So instead, what we do is we check the last url for the image set to this cell as a stored property... IE mostRecentThumbnailURLSet... and check it against the return of all the async calls previously called(called because we scrolled fast) result IE a tuple of the (image, urlString).
-////Now, if they are a match then we set, if not we just return. The biggest improvement is we skip the glitch affect from the tableview/collectionview cell's image when scrolling fast and having a slow/fast connection.
-////case .success(let thumbnailImage, let urlString):
-////guard urlString == mostRecentThumbnailURLSet { else return }
+// //adding the urlString to guard on it is important.
+// //becuase if we scroll through the tableView/collectionView fast, we are making a bunch of async calls that are running in the background.
+// //Even with prepareforreuse we wont know which will end last IE the prepareForReuse or the async call to get the image and assign it to the imageview as the result. With this being the case, we can cancel the async operation but this might be tricky because we dont know the exact timing of when it ends and it complete before we cancel.
+// //So instead, what we do is we check the last url for the image set to this cell as a stored property... IE mostRecentThumbnailURLSet... and check it against the return of all the async calls previously called(called because we scrolled fast) result IE a tuple of the (image, urlString).
+// //Now, if they are a match then we set, if not we just return. The biggest improvement is we skip the glitch affect from the tableview/collectionview cell's image when scrolling fast and having a slow/fast connection.
+// //case .success(let thumbnailImage, let urlString):
+// //guard urlString == mostRecentThumbnailURLSet { else return }
 //  func set(_ meal: MTMeal) {
 //    self.mealsBodyLabel.text = meal.name
 //

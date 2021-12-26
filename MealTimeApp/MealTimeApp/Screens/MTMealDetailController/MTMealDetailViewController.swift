@@ -13,7 +13,6 @@ class MTMealDetailViewController: UIViewController {
   let tableView = UITableView()
 
   
-  
   init(mealDetail: MTMealDetail) {
     self.mealDetail = mealDetail
     super.init(nibName: nil, bundle: nil)

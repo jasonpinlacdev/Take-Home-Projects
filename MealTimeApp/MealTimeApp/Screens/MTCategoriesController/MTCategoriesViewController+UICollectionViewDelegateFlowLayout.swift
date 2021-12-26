@@ -35,7 +35,7 @@ extension MTCategoriesViewController: UICollectionViewDelegateFlowLayout {
   
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let diffableDataSource = collectionView.dataSource as? MTCategoriesCollectionViewDiffableDataSource else { return }
+    guard let diffableDataSource = collectionView.dataSource as? UICollectionViewDiffableDataSource<MTCategoriesCollectionViewSection, MTCategory> else { return }
     guard let category = diffableDataSource.itemIdentifier(for: indexPath) else { return }
     self.showLoadingView()
     MTNetworkManager.shared.getMeals(for: category.name) { [weak self] result in
