@@ -50,6 +50,8 @@ class MTNetworkManager {
 //  }
   
   
+  
+  // generic function implementation
 //  func hitEndpoint(at: )
   
   

@@ -9,13 +9,9 @@ import UIKit
 
 class MTCategoriesViewController: UIViewController {
   
-  enum MTCategoriesCollectionViewSection {
-    case main
-  }
-  
   var categories: [MTCategory] = []
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-  var collectionViewDiffableDataSource: UICollectionViewDiffableDataSource<MTCategoriesCollectionViewSection, MTCategory>!
+  var collectionViewDiffableDataSource: MTCategoriesDiffableDataSource!
   
   let numberOfItemsPerRow: CGFloat = 2
   let spacingBetweenItems: CGFloat = 5.0
@@ -51,7 +47,7 @@ class MTCategoriesViewController: UIViewController {
   
   private func configureCollectionViewDiffableDataSource() {
     self.collectionView.register(MTCategoryCollectionViewCell.self, forCellWithReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier)
-    self.collectionViewDiffableDataSource = UICollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, category in
+    self.collectionViewDiffableDataSource = MTCategoriesDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, category in
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MTCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? MTCategoryCollectionViewCell else { fatalError("Failed to dequeue a MTCategoryCollectionViewCell") }
     
       // reset the cell to the placeholder state and cancel the last network request to download the thumbnail image data.
@@ -61,7 +57,7 @@ class MTCategoriesViewController: UIViewController {
       return cell
     })
     
-    updateDiffableDataSource(with: self.categories)
+    self.collectionViewDiffableDataSource.update(with: self.categories)
   }
   
   
@@ -72,7 +68,7 @@ class MTCategoriesViewController: UIViewController {
         switch result {
         case.success(let categories):
           self?.categories = categories
-          self?.updateDiffableDataSource(with: categories)
+          self?.collectionViewDiffableDataSource.update(with: categories)
           self?.removeLoadingView()
         case .failure(let error):
           self?.presentAlert(error: error)
@@ -82,12 +78,7 @@ class MTCategoriesViewController: UIViewController {
   }
   
   
-  func updateDiffableDataSource(with categories: [MTCategory]) {
-    var snapshot = NSDiffableDataSourceSnapshot<MTCategoriesCollectionViewSection, MTCategory>()
-    snapshot.appendSections([.main])
-    snapshot.appendItems(categories, toSection: .main)
-    collectionViewDiffableDataSource.apply(snapshot)
-  }
+
   
 }
 

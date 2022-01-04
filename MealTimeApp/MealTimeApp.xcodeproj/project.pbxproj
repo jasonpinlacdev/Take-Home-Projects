@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E121F0F8278508A400E354E5 /* MTCategoriesDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121F0F7278508A400E354E5 /* MTCategoriesDiffableDataSource.swift */; };
 		E13BEA902765A05400368ABF /* MTNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEA8F2765A05400368ABF /* MTNetworkManager.swift */; };
 		E13BEA922765A18100368ABF /* MTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEA912765A18100368ABF /* MTCategory.swift */; };
 		E13BEA942765A2B500368ABF /* MTMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEA932765A2B500368ABF /* MTMeal.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E121F0F7278508A400E354E5 /* MTCategoriesDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategoriesDiffableDataSource.swift; sourceTree = "<group>"; };
 		E13BEA8F2765A05400368ABF /* MTNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTNetworkManager.swift; sourceTree = "<group>"; };
 		E13BEA912765A18100368ABF /* MTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategory.swift; sourceTree = "<group>"; };
 		E13BEA932765A2B500368ABF /* MTMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMeal.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			children = (
 				E165371F27658C900019E76F /* MTCategoriesViewController.swift */,
 				E13BEAEA2772C63000368ABF /* MTCategoriesViewController+UICollectionViewDelegateFlowLayout.swift */,
+				E121F0F7278508A400E354E5 /* MTCategoriesDiffableDataSource.swift */,
 			);
 			path = MTCategoriesController;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */,
 				E13BEABA2766F94700368ABF /* MTMealsViewController.swift in Sources */,
 				E13BEAE72772C44200368ABF /* MTMealDetailViewController+UITableViewDataSource.swift in Sources */,
+				E121F0F8278508A400E354E5 /* MTCategoriesDiffableDataSource.swift in Sources */,
 				E13BEAA12765E4D800368ABF /* MTMealDetail.swift in Sources */,
 				E13BEAD22767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift in Sources */,
 				E13BEAB72766EEF000368ABF /* UIView+Ext.swift in Sources */,
