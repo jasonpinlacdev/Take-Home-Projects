@@ -17,12 +17,14 @@ extension MTMealDetailViewController: UITableViewDataSource {
     case preparations = "Preparations"
   }
   
+  
   func numberOfSections(in tableView: UITableView) -> Int {
     MTMealDetailTableViewSection.allCases.count
   }
 
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    guard let _ = self.mealDetail else { return nil }
     switch section {
     case 2:
       return MTMealDetailTableViewSection.videoDemonstration.rawValue
@@ -37,6 +39,7 @@ extension MTMealDetailViewController: UITableViewDataSource {
 
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let mealDetail = self.mealDetail else { return 0 }
     switch section {
     case 0:
       return 1
@@ -45,9 +48,9 @@ extension MTMealDetailViewController: UITableViewDataSource {
     case 2:
       return 1
     case 3:
-      return self.mealDetail.ingredientsWithMeasurements.count
+      return mealDetail.ingredientsWithMeasurements.count
     case 4:
-      return self.mealDetail.preparations.count
+      return mealDetail.preparations.count
     default:
       return 0
     }
@@ -55,6 +58,8 @@ extension MTMealDetailViewController: UITableViewDataSource {
 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let mealDetail = self.mealDetail else { return tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) }
+    
     switch indexPath.section {
     case 0:
       guard let bannerCell = tableView.dequeueReusableCell(withIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier, for: indexPath) as? MTMealDetailBannerTableViewCell else { fatalError("Failed to dequeue a MTMealDetailBannerTableViewCell.") }

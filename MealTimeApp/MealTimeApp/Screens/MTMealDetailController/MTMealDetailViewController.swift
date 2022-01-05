@@ -9,12 +9,14 @@ import UIKit
 
 class MTMealDetailViewController: UIViewController {
   
-  let mealDetail: MTMealDetail
+  let mealId: String
+  
   let tableView = UITableView()
+  var mealDetail: MTMealDetail?
 
   
-  init(mealDetail: MTMealDetail) {
-    self.mealDetail = mealDetail
+  init(mealId: String) {
+    self.mealId = mealId
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -29,6 +31,7 @@ class MTMealDetailViewController: UIViewController {
     configure()
     configureTableViewLayout()
     configureTableView()
+    getMealDetail()
   }
   
   
@@ -52,6 +55,7 @@ class MTMealDetailViewController: UIViewController {
   
   
   private func configureTableView() {
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
     tableView.register(MTMealDetailBannerTableViewCell.self, forCellReuseIdentifier: MTMealDetailBannerTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailTitleTableViewCell.self, forCellReuseIdentifier: MTMealDetailTitleTableViewCell.reuseIdentifier)
     tableView.register(MTMealDetailIngredientTableViewCell.self, forCellReuseIdentifier: MTMealDetailIngredientTableViewCell.reuseIdentifier)
@@ -60,6 +64,23 @@ class MTMealDetailViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
     tableView.separatorStyle = .none
+  }
+  
+  
+  private func getMealDetail() {
+    self.showLoadingView()
+    MTNetworkManager.shared.getMealDetail(for: self.mealId) { [weak self] result in
+      DispatchQueue.main.async {
+        self?.removeLoadingView()
+        switch result {
+        case .success(let mealDetail):
+          self?.mealDetail = mealDetail
+          self?.tableView.reloadData()
+        case .failure(let error):
+          self?.presentAlert(error: error)
+        }
+      }
+    }
   }
   
 }

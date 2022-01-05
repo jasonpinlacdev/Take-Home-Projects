@@ -9,12 +9,14 @@ import UIKit
 
 class MTMealsViewController: UIViewController {
   
-  var meals: [MTMeal]
+  var category: MTCategory
+  
   let tableView = UITableView()
+  var meals: [MTMeal] = []
   
 
-  init(meals: [MTMeal]) {
-    self.meals = meals
+  init(category: MTCategory) {
+    self.category = category
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -29,6 +31,7 @@ class MTMealsViewController: UIViewController {
     configure()
     configureTableViewLayout()
     configureTableView()
+    getMeals()
   }
   
   
@@ -53,6 +56,22 @@ class MTMealsViewController: UIViewController {
     tableView.register(MTMealsTableViewCell.self, forCellReuseIdentifier: MTMealsTableViewCell.reuseIdentifier)
     tableView.dataSource = self
     tableView.delegate = self
+  }
+  
+  private func getMeals() {
+    self.showLoadingView()
+    MTNetworkManager.shared.getMeals(for: category.name) { [weak self] result in
+      DispatchQueue.main.async {
+        self?.removeLoadingView()
+        switch result {
+        case .success(let meals):
+          self?.meals = meals
+          self?.tableView.reloadData()
+        case .failure(let error):
+          self?.presentAlert(error: error)
+        }
+      }
+    }
   }
   
 }

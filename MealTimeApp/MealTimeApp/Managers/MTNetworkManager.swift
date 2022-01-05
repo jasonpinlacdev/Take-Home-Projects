@@ -24,7 +24,7 @@ class MTNetworkManager {
   
 // 1 - DONE - refactor the ViewControllers so that I abstract away code in sperate file extensions rather than make subclasses
   
-// 2 - refactor the ViewControllers so that the network calls occur within them.
+// 2 - DONE - refactor the ViewControllers so that the network calls occur within them.
   
 // 3 - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
   
