@@ -69,18 +69,34 @@ class MTMealDetailViewController: UIViewController {
   
   private func getMealDetail() {
     self.showLoadingView()
-    MTNetworkManager.shared.getMealDetail(for: self.mealId) { [weak self] result in
-      DispatchQueue.main.async {
-        self?.removeLoadingView()
-        switch result {
-        case .success(let mealDetail):
-          self?.mealDetail = mealDetail
-          self?.tableView.reloadData()
-        case .failure(let error):
-          self?.presentAlert(error: error)
-        }
+      MTNetworkManager.shared.getPayload(at: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(mealId)") { [weak self] (result: Result<MTMealsDetailResponse, MTNetworkingError>) in
+          DispatchQueue.main.async {
+              self?.removeLoadingView()
+              switch result {
+              case .success(let mealsDetailResponse):
+                  guard !mealsDetailResponse.mealsDetail.isEmpty else { return }
+                  let mealsDetail: [MTMealDetail] = mealsDetailResponse.mealsDetail.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                  self?.mealDetail = mealsDetail[0]
+                  self?.tableView.reloadData()
+              case .failure(let error):
+                  self?.presentAlert(error: error)
+              }
+          }
+         
       }
-    }
+      
+//    MTNetworkManager.shared.getMealDetail(for: self.mealId) { [weak self] result in
+//      DispatchQueue.main.async {
+//        self?.removeLoadingView()
+//        switch result {
+//        case .success(let mealDetail):
+//          self?.mealDetail = mealDetail
+//          self?.tableView.reloadData()
+//        case .failure(let error):
+//          self?.presentAlert(error: error)
+//        }
+//      }
+//    }
   }
   
 }
