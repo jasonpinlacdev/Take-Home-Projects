@@ -11,16 +11,15 @@ class MTNetworkManager {
     
     static let shared = MTNetworkManager()
     let baseURL: String = "https://www.themealdb.com/api/json/v1/1/"
-    let thumbnailImageCache = NSCache<NSString, UIImage>()
     
     
     private init() { }
     
-    
     // TO DO
     
     // We must be careful that a user of our app doesnt waste their data on a nuch of netowrk calls happening in the background
-    // 0 - DONE - FIX TABLEVIEW COLLECTIONVIEW GLITCH WITH CANCELING THE DATA TASK INSTEAD OF RUNNING THE GUARD CHECK AND ALSO THE PREPARE FOR REUSE
+    // 0 - DONE - FIX TABLEVIEW COLLECTIONVIEW GLITCH WITH CANCELING THE DATA TASK INSTEAD OF RUNNING THE GUARD CHECK AND ALSO THE PREPARE FOR REUSE.
+    // I created a separate class to house the functionality for fetching thumbnail images and cacheing. IE. MTImageService
     
     // instead of having different objects act as the datasource and delegate and creating references to their dependent ViewController, I make the datasource and delegate the ViewController and create extensions in their own separate files of the VC to hold code for datasource/delgate respectively.
     // 1 - DONE - refactor the ViewControllers so that I abstract away code in sperate file extensions rather than make subclasses
@@ -96,29 +95,5 @@ class MTNetworkManager {
 //        }
 //        task.resume()
 //    }
-    
-    
-    func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage), MTNetworkingError>) -> Void) -> URLSessionDataTask? {
-        guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return nil }
-        let thumbNailImageCacheKey = NSString(string: urlString)
-        if let thumnailImage = self.thumbnailImageCache.object(forKey: thumbNailImageCacheKey) {
-            completionHandler(.success(thumnailImage))
-            return nil
-        }
-        else {
-            let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-                guard error == nil else { completionHandler(.failure(.localError)); return }
-                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
-                guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
-                guard let thumbnailImage = UIImage(data: thumbnailData) else { completionHandler(.failure(.dataDecodingError)); return }
-                self?.thumbnailImageCache.setObject(thumbnailImage, forKey: thumbNailImageCacheKey)
-                completionHandler(.success(thumbnailImage))
-            }
-            task.resume()
-            return task
-        }
-    }
-    
-    
     
 }

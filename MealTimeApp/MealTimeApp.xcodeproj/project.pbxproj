@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E117647727A2F42200C1285F /* MTImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E117647627A2F42200C1285F /* MTImageService.swift */; };
+		E117647A27A2F49000C1285F /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E117647927A2F49000C1285F /* Cancellable.swift */; };
+		E117647C27A2F4DC00C1285F /* URLSessionTask+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E117647B27A2F4DC00C1285F /* URLSessionTask+Cancellable.swift */; };
 		E121F0F8278508A400E354E5 /* MTCategoriesDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121F0F7278508A400E354E5 /* MTCategoriesDiffableDataSource.swift */; };
 		E13BEA902765A05400368ABF /* MTNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEA8F2765A05400368ABF /* MTNetworkManager.swift */; };
 		E13BEA922765A18100368ABF /* MTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEA912765A18100368ABF /* MTCategory.swift */; };
@@ -34,7 +37,6 @@
 		E13BEADA27678A0400368ABF /* MTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAD927678A0400368ABF /* MTTitleLabel.swift */; };
 		E13BEADC2767A42500368ABF /* MTMealDetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEADB2767A42500368ABF /* MTMealDetailLabel.swift */; };
 		E13BEADE2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEADD2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift */; };
-		E13BEAE127722FB000368ABF /* OldCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAE027722FAF00368ABF /* OldCode.swift */; };
 		E13BEAE32772C3D200368ABF /* MTMealsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAE22772C3D200368ABF /* MTMealsViewController+UITableViewDataSource.swift */; };
 		E13BEAE52772C3E800368ABF /* MTMealsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAE42772C3E800368ABF /* MTMealsViewController+UITableViewDelegate.swift */; };
 		E13BEAE72772C44200368ABF /* MTMealDetailViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BEAE62772C44200368ABF /* MTMealDetailViewController+UITableViewDataSource.swift */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E117647627A2F42200C1285F /* MTImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImageService.swift; sourceTree = "<group>"; };
+		E117647927A2F49000C1285F /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		E117647B27A2F4DC00C1285F /* URLSessionTask+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+Cancellable.swift"; sourceTree = "<group>"; };
 		E121F0F7278508A400E354E5 /* MTCategoriesDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategoriesDiffableDataSource.swift; sourceTree = "<group>"; };
 		E13BEA8F2765A05400368ABF /* MTNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTNetworkManager.swift; sourceTree = "<group>"; };
 		E13BEA912765A18100368ABF /* MTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategory.swift; sourceTree = "<group>"; };
@@ -75,7 +80,6 @@
 		E13BEAD927678A0400368ABF /* MTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTTitleLabel.swift; sourceTree = "<group>"; };
 		E13BEADB2767A42500368ABF /* MTMealDetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailLabel.swift; sourceTree = "<group>"; };
 		E13BEADD2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMealDetailYoutubeTableViewCell.swift; sourceTree = "<group>"; };
-		E13BEAE027722FAF00368ABF /* OldCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldCode.swift; sourceTree = "<group>"; };
 		E13BEAE22772C3D200368ABF /* MTMealsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTMealsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		E13BEAE42772C3E800368ABF /* MTMealsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTMealsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		E13BEAE62772C44200368ABF /* MTMealDetailViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTMealDetailViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -101,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E117647827A2F47800C1285F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E117647927A2F49000C1285F /* Cancellable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E13BEAB82766F91500368ABF /* MTMealsController */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,14 +180,6 @@
 			path = MTMealDetailTableViewCells;
 			sourceTree = "<group>";
 		};
-		E13BEAEC27790B3400368ABF /* Old Code Refacored */ = {
-			isa = PBXGroup;
-			children = (
-				E13BEAE027722FAF00368ABF /* OldCode.swift */,
-			);
-			path = "Old Code Refacored";
-			sourceTree = "<group>";
-		};
 		E16536F8276589420019E76F = {
 			isa = PBXGroup;
 			children = (
@@ -195,9 +199,9 @@
 		E1653703276589420019E76F /* MealTimeApp */ = {
 			isa = PBXGroup;
 			children = (
-				E13BEAEC27790B3400368ABF /* Old Code Refacored */,
 				E165371E27658B220019E76F /* Managers */,
 				E165371D27658B0D0019E76F /* Utitlity */,
+				E117647827A2F47800C1285F /* Protocols */,
 				E165371C27658B080019E76F /* Extensions */,
 				E165371927658AE80019E76F /* Models */,
 				E165371A27658AED0019E76F /* Views */,
@@ -258,6 +262,7 @@
 				E13BEAA627667EFC00368ABF /* UIViewController+Ext.swift */,
 				E13BEAB42766BBDC00368ABF /* UIColor+Ext.swift */,
 				E13BEAB62766EEF000368ABF /* UIView+Ext.swift */,
+				E117647B27A2F4DC00C1285F /* URLSessionTask+Cancellable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				E13BEA8F2765A05400368ABF /* MTNetworkManager.swift */,
+				E117647627A2F42200C1285F /* MTImageService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -374,11 +380,11 @@
 				E13BEAA727667EFC00368ABF /* UIViewController+Ext.swift in Sources */,
 				E165372027658C900019E76F /* MTCategoriesViewController.swift in Sources */,
 				E13BEA9A2765ACFF00368ABF /* MTNetworkingError.swift in Sources */,
-				E13BEAE127722FB000368ABF /* OldCode.swift in Sources */,
 				E13BEAC42767168500368ABF /* MTBodyLabel.swift in Sources */,
 				E13BEAB32766B89700368ABF /* MTSymbol.swift in Sources */,
 				E13BEABA2766F94700368ABF /* MTMealsViewController.swift in Sources */,
 				E13BEAE72772C44200368ABF /* MTMealDetailViewController+UITableViewDataSource.swift in Sources */,
+				E117647A27A2F49000C1285F /* Cancellable.swift in Sources */,
 				E121F0F8278508A400E354E5 /* MTCategoriesDiffableDataSource.swift in Sources */,
 				E13BEAA12765E4D800368ABF /* MTMealDetail.swift in Sources */,
 				E13BEAD22767354E00368ABF /* MTMealDetailIngredientTableViewCell.swift in Sources */,
@@ -394,10 +400,12 @@
 				E13BEAC02767150600368ABF /* MTMealsTableViewCell.swift in Sources */,
 				E13BEA902765A05400368ABF /* MTNetworkManager.swift in Sources */,
 				E13BEAE92772C45900368ABF /* MTMealDetailViewController+UITableViewDelegate.swift in Sources */,
+				E117647727A2F42200C1285F /* MTImageService.swift in Sources */,
 				E13BEAD42767358A00368ABF /* MTMealDetailPreparationTableViewCell.swift in Sources */,
 				E13BEAC22767164B00368ABF /* MTThumbnailImageView.swift in Sources */,
 				E13BEADE2767AC5F00368ABF /* MTMealDetailYoutubeTableViewCell.swift in Sources */,
 				E13BEAA52766117900368ABF /* MTCategoriesResponse.swift in Sources */,
+				E117647C27A2F4DC00C1285F /* URLSessionTask+Cancellable.swift in Sources */,
 				E13BEAEB2772C63000368ABF /* MTCategoriesViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				E13BEA922765A18100368ABF /* MTCategory.swift in Sources */,
 				E13BEA9F2765D0E300368ABF /* MTNavigationController.swift in Sources */,
