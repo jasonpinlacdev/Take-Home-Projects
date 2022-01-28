@@ -30,7 +30,7 @@ class MTNetworkManager {
     // 3 - DONE - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
     // How could you make the network manager better?
     
-    // 4 - ADD UNIT TESTING USING STUBS/MOCKS SETUP VIA DEPENDENCY INJECTION AND PROTOCOLS
+    // 4 - DONE - ADD UNIT TESTING USING STUBS/MOCKS SETUP VIA DEPENDENCY INJECTION AND PROTOCOLS
     // How did you make sure the image cache in the networking class works?
     // unit test for the fetching the image and cacheing logic. Use stubs to simulate the network call so we can quickly test cache storing and retrieval logic.
     
