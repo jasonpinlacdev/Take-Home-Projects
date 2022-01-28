@@ -47,7 +47,20 @@
 		E165370E276589470019E76F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E165370D276589470019E76F /* Assets.xcassets */; };
 		E1653711276589470019E76F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E165370F276589470019E76F /* LaunchScreen.storyboard */; };
 		E165372027658C900019E76F /* MTCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165371F27658C900019E76F /* MTCategoriesViewController.swift */; };
+		E1F95ED327A3891100ED3CB1 /* MealTimeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F95ED227A3891100ED3CB1 /* MealTimeAppTests.swift */; };
+		E1F95EDA27A38B7700ED3CB1 /* MTImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F95ED927A38B7700ED3CB1 /* MTImageServiceTests.swift */; };
+		E1F95EDE27A399F000ED3CB1 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F95EDD27A399F000ED3CB1 /* URLSessionStub.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1F95ED427A3891100ED3CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16536F9276589420019E76F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1653700276589420019E76F;
+			remoteInfo = MealTimeApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E117647627A2F42200C1285F /* MTImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImageService.swift; sourceTree = "<group>"; };
@@ -92,10 +105,21 @@
 		E1653710276589470019E76F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1653712276589470019E76F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E165371F27658C900019E76F /* MTCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTCategoriesViewController.swift; sourceTree = "<group>"; };
+		E1F95ED027A3891100ED3CB1 /* MealTimeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MealTimeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F95ED227A3891100ED3CB1 /* MealTimeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTimeAppTests.swift; sourceTree = "<group>"; };
+		E1F95ED927A38B7700ED3CB1 /* MTImageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTImageServiceTests.swift; sourceTree = "<group>"; };
+		E1F95EDD27A399F000ED3CB1 /* URLSessionStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E16536FE276589420019E76F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F95ECD27A3891100ED3CB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				E1653703276589420019E76F /* MealTimeApp */,
+				E1F95ED127A3891100ED3CB1 /* MealTimeAppTests */,
 				E1653702276589420019E76F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -192,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E1653701276589420019E76F /* MealTimeApp.app */,
+				E1F95ED027A3891100ED3CB1 /* MealTimeAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +229,7 @@
 				E165371D27658B0D0019E76F /* Utitlity */,
 				E117647827A2F47800C1285F /* Protocols */,
 				E165371C27658B080019E76F /* Extensions */,
+				E1F95EE127A39D4F00ED3CB1 /* Stubs */,
 				E165371927658AE80019E76F /* Models */,
 				E165371A27658AED0019E76F /* Views */,
 				E165371B27658AF00019E76F /* Controllers */,
@@ -305,6 +332,23 @@
 			path = MTCategoriesController;
 			sourceTree = "<group>";
 		};
+		E1F95ED127A3891100ED3CB1 /* MealTimeAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1F95ED227A3891100ED3CB1 /* MealTimeAppTests.swift */,
+				E1F95ED927A38B7700ED3CB1 /* MTImageServiceTests.swift */,
+			);
+			path = MealTimeAppTests;
+			sourceTree = "<group>";
+		};
+		E1F95EE127A39D4F00ED3CB1 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				E1F95EDD27A399F000ED3CB1 /* URLSessionStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,6 +369,24 @@
 			productReference = E1653701276589420019E76F /* MealTimeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E1F95ECF27A3891100ED3CB1 /* MealTimeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1F95ED627A3891100ED3CB1 /* Build configuration list for PBXNativeTarget "MealTimeAppTests" */;
+			buildPhases = (
+				E1F95ECC27A3891100ED3CB1 /* Sources */,
+				E1F95ECD27A3891100ED3CB1 /* Frameworks */,
+				E1F95ECE27A3891100ED3CB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1F95ED527A3891100ED3CB1 /* PBXTargetDependency */,
+			);
+			name = MealTimeAppTests;
+			productName = MealTimeAppTests;
+			productReference = E1F95ED027A3891100ED3CB1 /* MealTimeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -337,6 +399,10 @@
 				TargetAttributes = {
 					E1653700276589420019E76F = {
 						CreatedOnToolsVersion = 13.1;
+					};
+					E1F95ECF27A3891100ED3CB1 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = E1653700276589420019E76F;
 					};
 				};
 			};
@@ -354,6 +420,7 @@
 			projectRoot = "";
 			targets = (
 				E1653700276589420019E76F /* MealTimeApp */,
+				E1F95ECF27A3891100ED3CB1 /* MealTimeAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -365,6 +432,13 @@
 			files = (
 				E1653711276589470019E76F /* LaunchScreen.storyboard in Resources */,
 				E165370E276589470019E76F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F95ECE27A3891100ED3CB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,10 +487,28 @@
 				E13BEA942765A2B500368ABF /* MTMeal.swift in Sources */,
 				E13BEAB12766A11500368ABF /* MTCategoryCollectionViewCell.swift in Sources */,
 				E13BEADC2767A42500368ABF /* MTMealDetailLabel.swift in Sources */,
+				E1F95EDE27A399F000ED3CB1 /* URLSessionStub.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F95ECC27A3891100ED3CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F95EDA27A38B7700ED3CB1 /* MTImageServiceTests.swift in Sources */,
+				E1F95ED327A3891100ED3CB1 /* MealTimeAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E1F95ED527A3891100ED3CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1653700276589420019E76F /* MealTimeApp */;
+			targetProxy = E1F95ED427A3891100ED3CB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E165370F276589470019E76F /* LaunchScreen.storyboard */ = {
@@ -604,6 +696,52 @@
 			};
 			name = Release;
 		};
+		E1F95ED727A3891100ED3CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jasonpinlac.MealTimeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MealTimeApp.app/MealTimeApp";
+			};
+			name = Debug;
+		};
+		E1F95ED827A3891100ED3CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jasonpinlac.MealTimeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MealTimeApp.app/MealTimeApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -621,6 +759,15 @@
 			buildConfigurations = (
 				E1653716276589470019E76F /* Debug */,
 				E1653717276589470019E76F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1F95ED627A3891100ED3CB1 /* Build configuration list for PBXNativeTarget "MealTimeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1F95ED727A3891100ED3CB1 /* Debug */,
+				E1F95ED827A3891100ED3CB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

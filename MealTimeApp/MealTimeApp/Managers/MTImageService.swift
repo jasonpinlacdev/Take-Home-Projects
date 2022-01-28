@@ -12,6 +12,8 @@ final class MTImageService {
     
     static private let thumbnailImageCache = NSCache<NSString, UIImage>()
     
+    var urlSession: URLSessionRepresentable = URLSession.shared
+    
     func getThumbnail(from urlString: String, completionHandler: @escaping (Result<(UIImage), MTNetworkingError>) -> Void) -> Cancellable? {
         guard let url = URL(string: urlString) else { completionHandler(.failure(.invalidURL)); return nil }
         let thumbNailImageCacheKey = NSString(string: urlString)
@@ -20,7 +22,7 @@ final class MTImageService {
             return nil
         }
         else {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            let task = urlSession.dataTask(with: url) { data, response, error in
                 guard error == nil else { completionHandler(.failure(.localError)); return }
                 guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else { completionHandler(.failure(.serverError)); return }
                 guard let thumbnailData = data else { completionHandler(.failure(.dataError)); return }
