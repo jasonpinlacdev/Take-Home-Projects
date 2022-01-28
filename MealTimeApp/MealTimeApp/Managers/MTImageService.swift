@@ -36,3 +36,11 @@ final class MTImageService {
     }
     
 }
+
+
+// This extensions prupose is to organize and contain the methods asociated with Unit Testing cache functionality
+extension MTImageService {
+    func removeAllEntriesInCache() {
+        MTImageService.thumbnailImageCache.removeAllObjects()
+    }
+}
