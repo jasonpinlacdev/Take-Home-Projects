@@ -25,17 +25,21 @@ class MTImageServiceTests: XCTestCase {
     
     func testImageServiceStoresImageInCacheCorrectly() {
         // given
-        let endpoint = "https://avatars.githubusercontent.com/u/49731117?v=4"
-        let url = URL(string: endpoint)!
-        let stubbedData =  try? Data(contentsOf: url) // I couldnt figure out how to stub a UIImage() and convert it to Data to decode correctly. So, Im fetching an image syncronously from the web to use as my stub. This test fails without internet.
-        let stubbedResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let stubbedEndpoint = "http://testurl.com"
+        let stubbedURL = URL(string: stubbedEndpoint)!
+        let stubbedData: Data? = UIImage(systemName: "car")!.pngData()
+        let stubbedResponse = HTTPURLResponse(url: stubbedURL, statusCode: 200, httpVersion: nil, headerFields: nil)
+       
+        // our MTImageService has a urlSession property of type URLSessionRepresentable. This is an protocol/abstraction that allows our URLSessionStub to be used in place of the URLSession for stubbing/testing purposes.
+        // this is a great example of using dependency injection (property injection) and protcols to decouple concrete types allowing a dependent type to be flexibile through an abstract dependency.
+        // This means any type that adopts and conforms to the protocol URLSessionRepresentable can be used as the URLSession dependency.
         let urlSessionStub = URLSessionStub(stubbedData: stubbedData, stubbedResponse: stubbedResponse, stubbedError: nil)
         sut.urlSession = urlSessionStub
         
         let promise = expectation(description: "An image was cached.")
   
         // when
-        let stubbedDataTask = sut.getThumbnail(from: endpoint) { (result: Result<UIImage, MTNetworkingError>) in
+        let stubbedDataTask = sut.getThumbnail(from: stubbedEndpoint) { (result: Result<UIImage, MTNetworkingError>) in
             // then
             switch result {
             case .success(_):
@@ -53,16 +57,17 @@ class MTImageServiceTests: XCTestCase {
     
     func testImageServiceRetrievesFromCacheCorrectly() {
         // given
-        let endpoint = "https://avatars.githubusercontent.com/u/49731117?v=4"
-        let url = URL(string: endpoint)!
-        let stubbedData =  try? Data(contentsOf: url) // I couldnt figure out how to stub a UIImage() and convert it to Data to decode correctly. So, Im fetching an image syncronously from the web to use as my stub. This test fails without internet.
-        let stubbedResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let stubbedEndpoint = "http://testurl.com"
+        let stubbedURL = URL(string: stubbedEndpoint)!
+        let stubbedData: Data? = UIImage(systemName: "car")!.pngData()
+        let stubbedResponse = HTTPURLResponse(url: stubbedURL, statusCode: 200, httpVersion: nil, headerFields: nil)
+     
         let urlSessionStub = URLSessionStub(stubbedData: stubbedData, stubbedResponse: stubbedResponse, stubbedError: nil)
         sut.urlSession = urlSessionStub
         
         // when
         // request and store an image in the cache
-        _ = sut.getThumbnail(from: endpoint) { (result: Result<UIImage, MTNetworkingError>) in
+        _ = sut.getThumbnail(from: stubbedEndpoint) { (result: Result<UIImage, MTNetworkingError>) in
             switch result {
             case .success(_):
                 // if we reach the success case and task is not nil, this means that our image was fetched cached.
@@ -76,7 +81,7 @@ class MTImageServiceTests: XCTestCase {
         let promise = expectation(description: "An image retrieved successfully from the cache.")
         
         // request an image from the cache
-        let stubbedDataTask2 = sut.getThumbnail(from: endpoint) { (result: Result<UIImage, MTNetworkingError>) in
+        let stubbedDataTask2 = sut.getThumbnail(from: stubbedEndpoint) { (result: Result<UIImage, MTNetworkingError>) in
             switch result {
             case .success(_):
                 // then

@@ -24,7 +24,7 @@ class MTNetworkManager {
     // 1 - DONE - refactor the ViewControllers so that I abstract away code in sperate file extensions rather than make subclasses
     // instead of having different objects act as the datasource and delegate and creating references to their dependent ViewController, I make the datasource and delegate the ViewController and create extensions in their own separate files of the VC to hold code for datasource/delgate respectively.
     
-    // 2 - DONE - refactor the ViewControllers so that the network calls occur within them.
+    // 2 - DONE - refactor the ViewControllers so that the network calls occur within them. IE Call site is on the VC.
     // What if there are multiple gateways into each viewcontroller? we would have to make network calls for the data to inject each time. Instead, make the network calls in the VC. This reduces code duplication.
     
     // 3 - DONE - MAKE THE NETWORKMANAGER TAKE ADVANTAGE OF GENERICS
